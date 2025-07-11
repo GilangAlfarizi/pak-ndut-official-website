@@ -2,10 +2,10 @@ import "./App.css";
 
 function App() {
 	return (
-		<>
-			<p>Hello!</p>
-		</>
-	);
+    <>
+      <p>Hello Pak Ndut!</p>
+    </>
+  );
 }
 
 export default App;
