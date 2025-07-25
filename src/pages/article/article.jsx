@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../components/global/Nav";
 
-const Reservation = () => {
+const Article = () => {
     return (
     <>
      <div>
@@ -12,4 +12,4 @@ const Reservation = () => {
   );
 };
 
-export default Reservation;
+export default Article;
