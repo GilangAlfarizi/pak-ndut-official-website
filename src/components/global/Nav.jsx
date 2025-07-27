@@ -1,12 +1,10 @@
 import React from 'react';
 import logo from "../../../public/images/logo.svg";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const navigate = useNavigate();
-
   return (
-    <nav className="bg-white">
+    <nav className="bg-white fixed top-0 w-full z-10 shadow">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           to="/"

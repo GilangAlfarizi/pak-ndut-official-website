@@ -1,6 +1,7 @@
 import React from "react";
 import hero from "../../../public/images/hero.svg";
 
+
 const Hero = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
