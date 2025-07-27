@@ -1,0 +1,28 @@
+{
+	"data": [
+		{
+			"id": 1,
+			"name": "Waitress",
+			"education": "SMA/Sederajat",
+			"age": "18 - 27 tahun",
+			"gender": "Laki-laki/Perempuan",
+			"location": "Bebek Goreng Pak Ndut Kartasura"
+		},
+		{
+			"id": 2,
+			"name": "Chef",
+			"education": "SMA/Sederajat",
+			"age": "20 - 32 tahun",
+			"gender": "Laki-laki/Perempuan",
+			"location": "Bebek Goreng Pak Ndut Semarang"
+		},
+		{
+			"id": 3,
+			"name": "Cashier",
+			"education": "SMA/Sederajat",
+			"age": "18 - 27 tahun",
+			"gender": "Perempuan",
+			"location": "Bebek Goreng Pak Ndut Surabaya"
+		}
+	]
+}
