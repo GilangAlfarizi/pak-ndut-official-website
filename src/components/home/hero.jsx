@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       <img
-        className="absolute inset-0 object-cover w-full h-full brightness-40"
+        className="absolute inset-0 object-cover w-full h-full brightness-30"
         src={hero}
         alt="Hero Image"
       />

@@ -1,17 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import logo from "../../../public/images/logo.svg";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const [isTransparent, setIsTransparent] = useState(true);
+
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setIsTransparent(false);
+    } else {
+      setIsTransparent(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-white fixed top-0 w-full z-10 shadow">
+    <nav
+      className={`fixed top-0 w-full z-10 transition-all duration-400 ${
+        isTransparent ? "bg-transparent" : "bg-white"
+      }`}
+    >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link
+        <NavLink
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <img src={logo} className="h-10" alt="Pakndut Logo" />
-        </Link>
+        </NavLink>
         <button
           data-collapse-toggle="navbar-default"
           type="button"
@@ -37,38 +58,54 @@ const Navbar = () => {
           </svg>
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
             <li>
-              <Link
+              <NavLink
                 to="/"
-                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-black md:dark:hover:text-[#FFCC29] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className={({ isActive }) =>
+                  `block py-2 px-3 rounded-sm ${isActive ? "font-bold" : ""} ${
+                    isTransparent ? "text-white" : "text-black"
+                  } hover:text-[#FFCC29]`
+                }
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/career"
-                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-black md:dark:hover:text-[#FFCC29] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className={({ isActive }) =>
+                  `block py-2 px-3 rounded-sm ${isActive ? "font-bold" : ""} ${
+                    isTransparent ? "text-white" : "text-black"
+                  } hover:text-[#FFCC29]`
+                }
               >
                 Career
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/article"
-                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-black md:dark:hover:text-[#FFCC29] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className={({ isActive }) =>
+                  `block py-2 px-3 rounded-sm ${isActive ? "font-bold" : ""} ${
+                    isTransparent ? "text-white" : "text-black"
+                  } hover:text-[#FFCC29]`
+                }
               >
                 Article
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/reservation"
-                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-black md:dark:hover:text-[#FFCC29] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className={({ isActive }) =>
+                  `block py-2 px-3 rounded-sm ${isActive ? "font-bold" : ""} ${
+                    isTransparent ? "text-white" : "text-black"
+                  } hover:text-[#FFCC29]`
+                }
               >
                 Reservation
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
