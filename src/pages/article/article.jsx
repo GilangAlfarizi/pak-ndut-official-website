@@ -1,12 +1,15 @@
 import React from "react";
 import Navbar from "../../components/global/Nav";
+import ArticleCard from "../../components/article/MainArticle";
+import ArticleComponent from "../../components/article/ArticleComponent";
 
 const Article = () => {
     return (
     <>
      <div>
         <Navbar />
-      <p>Hello Pak Ndut anjay</p>
+        <ArticleCard />
+        <ArticleComponent />
       </div>
     </>
   );
