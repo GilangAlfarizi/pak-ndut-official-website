@@ -16,7 +16,7 @@ const ArticleComponent = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {articles.map((article, index) => (
           <div key={index} className="flex flex-col">
-            <div className="w-full h-40 bg-gray-200 rounded-md"></div>
+            <div className="w-full h-50 bg-gray-200 rounded-md"></div>
             <h2 className="mt-4 font-semibold text-black">{article.title}</h2>
             <p className="text-sm text-gray-600">{article.date}</p>
           </div>
