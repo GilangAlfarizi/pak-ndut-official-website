@@ -9,7 +9,7 @@ const ArticleCard = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <p className="text-white mt-4">9 July 2025</p>
-        <button className="bg-white text-[#BA0202] hover:bg-gray-200 transition duration-200 mt-4 py-2 px-10 rounded-full font-semibold">
+        <button className="bg-white text-[#BA0202] hover:bg-gray-200 transition duration-300 mt-4 py-2 px-10 rounded-full font-semibold">
           Read Post
         </button>
       </div>

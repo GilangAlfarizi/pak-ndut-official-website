@@ -67,7 +67,7 @@ const About = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </div>xl
           <div className="flex aspect-square w-full bg-amber-300 rounded-br-4xl xl:rounded-bl-none rounded-b-4xl">3</div>
         </div>
       </div>
