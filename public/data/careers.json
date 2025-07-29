@@ -1,58 +1,46 @@
-[
-  {
-    "title": "Waiter/Waitress",
-    "education": "SMA/Sederajat",
-    "location": "Jakarta",
-    "age": "19 - 30 tahun",
-    "gender": "Laki-laki/Perempuan"
-  },
-  {
-    "title": "Cashier",
-    "education": "SMA/Sederajat",
-    "location": "Bandung",
-    "age": "19 - 30 tahun",
-    "gender": "Laki-laki/Perempuan"
-  },
-  {
-    "title": "Waiter/Waitress",
-    "education": "SMA/Sederajat",
-    "location": "Surabaya",
-    "age": "19 - 30 tahun",
-    "gender": "Laki-laki/Perempuan"
-  },
-  {
-    "title": "Waiter/Waitress",
-    "education": "SMA/Sederajat",
-    "location": "Yogyakarta",
-    "age": "19 - 30 tahun",
-    "gender": "Laki-laki/Perempuan"
-  },
-  {
-    "title": "Waiter/Waitress",
-    "education": "SMA/Sederajat",
-    "location": "Semarang",
-    "age": "19 - 30 tahun",
-    "gender": "Laki-laki/Perempuan"
-  },
-  {
-    "title": "Waiter/Waitress",
-    "education": "SMA/Sederajat",
-    "location": "Makassar",
-    "age": "19 - 30 tahun",
-    "gender": "Laki-laki/Perempuan"
-  },
-  {
-    "title": "Waiter/Waitress",
-    "education": "SMA/Sederajat",
-    "location": "Medan",
-    "age": "19 - 30 tahun",
-    "gender": "Laki-laki/Perempuan"
-  },
-  {
-    "title": "Waiter/Waitress",
-    "education": "SMA/Sederajat",
-    "location": "Balikpapan",
-    "age": "19 - 30 tahun",
-    "gender": "Laki-laki/Perempuan"
-  }
-]
+{
+	"data": [
+		{
+			"id": 1,
+			"name": "Waitress",
+			"location": "Bebek Goreng Pak Ndut Kartasura",
+			"age": "18 - 27 tahun",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent cursus tortor ut nulla dignissim vestibulum. Nullam eu ligula neque. Vivamus fermentum eros ante, sed vehicula magna porta vel. Nullam euismod tempus fermentum. Pellentesque condimentum est ac sem lobortis rutrum. Integer tincidunt commodo libero. Praesent eget cursus elit, quis dictum quam. Nullam placerat sem dolor.",
+			"requirement": [
+				"Proven work experience as a Waiter or Waitress",
+				"Attentiveness and patience for customers",
+				"Active listening and effective communication skills",
+				"Flexibility to work in shifts",
+				"High school diploma; food safety training is a plus"
+			]
+		},
+		{
+			"id": 2,
+			"name": "Chef",
+			"location": "Bebek Goreng Pak Ndut Semarang",
+			"age": "18 - 27 tahun",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent cursus tortor ut nulla dignissim vestibulum. Nullam eu ligula neque. Vivamus fermentum eros ante, sed vehicula magna porta vel. Nullam euismod tempus fermentum. Pellentesque condimentum est ac sem lobortis rutrum. Integer tincidunt commodo libero. Praesent eget cursus elit, quis dictum quam. Nullam placerat sem dolor.",
+			"requirement": [
+				"Proven work experience as a Chef or Kitchen Staff",
+				"Attentiveness and patience for customers",
+				"Active listening and effective communication skills",
+				"Flexibility to work in shifts",
+				"High school diploma, food safety training is a plus"
+			]
+		},
+		{
+			"id": 3,
+			"name": "Cashier",
+			"location": "Bebek Goreng Pak Ndut Surabaya",
+			"age": "18 - 27 tahun",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent cursus tortor ut nulla dignissim vestibulum. Nullam eu ligula neque. Vivamus fermentum eros ante, sed vehicula magna porta vel. Nullam euismod tempus fermentum. Pellentesque condimentum est ac sem lobortis rutrum. Integer tincidunt commodo libero. Praesent eget cursus elit, quis dictum quam. Nullam placerat sem dolor.",
+			"requirement": [
+				"Proven work experience as a Cashier",
+				"Attentiveness and patience for customers",
+				"Active listening and effective communication skills",
+				"Flexibility to work in shifts",
+				"Hands-on experience with cash register and ordering information system (e.g. Revel POS or Toast POS)"
+			]
+		}
+	]
+}

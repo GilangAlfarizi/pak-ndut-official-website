@@ -2,51 +2,107 @@
 	"data": [
 		{
 			"id": 1,
-			"name": "Bebek Goreng Pak Ndut Kartasura",
-			"address": "Jl. Slamet Riyadi No.159, Dusun III, Kartasura, Kec. Kartasura 57169",
-			"city": "Kabupaten Sukoharjo",
+			"name": "Bebek Goreng Pak Ndut Bandung",
+			"address": "Jl. Halimun No.10, Malabar, Kec. Lengkong, Kota Bandung, Jawa Barat 40262",
+			"province": "Jawa Barat",
 			"open_hours": "09:00 - 21:00",
-			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31643.181715557002!2d110.73624039390997!3d-7.531527152523612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a14eb9b07e921%3A0x7d58036b0fe5dd1d!2sBebek%20Goreng%20Pak%20Ndut%20Kartosuro!5e0!3m2!1sen!2sid!4v1753633798168!5m2!1sen!2sid"
+			"map_url": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d16341427.909927124!2d102.662085!3d0.5905075!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e62acc7746b7%3A0xb3c04852815fadc!2sBebek%20Goreng%20Pak%20Ndut!5e0!3m2!1sen!2sid!4v1753805857592!5m2!1sen!2sid"
 		},
 		{
 			"id": 2,
-			"name": "Bebek Goreng Pak Ndut Solo Grand Mall",
-			"address": "Lantai 3 Solo Grand Mall, Jl. Slamet Riyadi No.273, Surakarta 57141",
-			"city": "Kota Surakarta",
-			"open_hours": "10:00 - 22:00",
-			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31643.181715557002!2d110.73624039390997!3d-7.531527152523612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a14eb9b07e921%3A0x7d58036b0fe5dd1d!2sBebek%20Goreng%20Pak%20Ndut%20Kartosuro!5e0!3m2!1sen!2sid!4v1753633798168!5m2!1sen!2sid"
+			"name": "Bebek Goreng Pak Ndut Air Mancur",
+			"address": "Jl. Pemuda No.9A, RT.3/RW.7, Tanah Sareal, Kec. Tanah Sereal, Kota Bogor, Jawa Barat 16161",
+			"province": "Jawa Barat",
+			"open_hours": "08:00 - 21:30",
+			"map_url": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15853.737558895695!2d106.7933146!3d-6.5928081!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c58834af952d%3A0xfab6a58b78901779!2sBebek%20Pak%20Ndut%20Bogor%20Air%20Mancur!5e0!3m2!1sen!2sid!4v1753806000740!5m2!1sen!2sid"
 		},
 		{
 			"id": 3,
-			"name": "Bebek Goreng Pak Ndut Yogyakarta Malioboro",
-			"address": "Jl. Malioboro No.60, Suryatmajan, Danurejan, Kota Yogyakarta 55213",
-			"city": "Kota Yogyakarta",
-			"open_hours": "10:00 - 21:00",
-			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31643.181715557002!2d110.73624039390997!3d-7.531527152523612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a14eb9b07e921%3A0x7d58036b0fe5dd1d!2sBebek%20Goreng%20Pak%20Ndut%20Kartosuro!5e0!3m2!1sen!2sid!4v1753633798168!5m2!1sen!2sid"
+			"name": "Bebek Goreng Pak Ndut Bina Marga",
+			"address": "Jl. Bina Marga No.17, RT.04/RW.11, Baranangsiang, Kec. Bogor Tim., Kota Bogor, Jawa Barat 16143",
+			"province": "Jawa Barat",
+			"open_hours": "09:00 - 21:00",
+			"map_url": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15853.304852638208!2d106.7916624!3d-6.6063248!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5ddef01a153%3A0xc5e8fb49de958d30!2sBebek%20%26%20Ayam%20Goreng%20Pak%20Ndut!5e0!3m2!1sen!2sid!4v1753806062564!5m2!1sen!2sid"
 		},
 		{
 			"id": 4,
-			"name": "Bebek Goreng Pak Ndut Semarang",
-			"address": "Jl. Pandanaran No.119, Pekunden, Semarang Tengah, Kota Semarang 50241",
-			"city": "Kota Semarang",
-			"open_hours": "10:00 - 22:00",
-			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31643.181715557002!2d110.73624039390997!3d-7.531527152523612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a14eb9b07e921%3A0x7d58036b0fe5dd1d!2sBebek%20Goreng%20Pak%20Ndut%20Kartosuro!5e0!3m2!1sen!2sid!4v1753633798168!5m2!1sen!2sid"
+			"name": "Bebek Goreng Pak Ndut Cikande",
+			"address": "Jl. Raya Serang - Jkt Kampung Kukun, Desa No.KM. 27, Parigi, Kec. Cikande, Kabupaten Serang, Banten 42186",
+			"province": "Banten",
+			"open_hours": "10:00 - 21:00",
+			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.426132677269!2d106.36037909999999!3d-6.2073882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e42034669d0085d%3A0x5c8a88716b6e2804!2sBebek%20%26%20Ayam%20Goreng%20Pak%20Ndut%20Cikande%20(New)!5e0!3m2!1sen!2sid!4v1753806152986!5m2!1sen!2sid"
 		},
 		{
 			"id": 5,
-			"name": "Bebek Goreng Pak Ndut Jakarta Depok",
-			"address": "Jl. Margonda Raya No.358, Pondok Cina, Beji, Kota Depok 16424",
-			"city": "Kota Depok",
-			"open_hours": "10:00 - 22:00",
-			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31643.181715557002!2d110.73624039390997!3d-7.531527152523612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a14eb9b07e921%3A0x7d58036b0fe5dd1d!2sBebek%20Goreng%20Pak%20Ndut%20Kartosuro!5e0!3m2!1sen!2sid!4v1753633798168!5m2!1sen!2sid"
+			"name": "Bebek Goreng Pak Ndut Cilegon",
+			"address": "Komplek Perumahan GM KS Blok F2 No. 24, Kotabumi, Kec. Purwakarta, Kota Cilegon, Banten 42434",
+			"province": "Banten",
+			"open_hours": "10:00 - 21:00",
+			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.0078281582882!2d106.03149069999999!3d-5.993656400000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e4191d9a980c22b%3A0x6db048e77da5873c!2sBebek%20%26%20Ayam%20Goreng%20Pak%20Ndut!5e0!3m2!1sen!2sid!4v1753806222860!5m2!1sen!2sid"
 		},
 		{
 			"id": 6,
-			"name": "Bebek Goreng Pak Ndut Surabaya",
-			"address": "Jl. Mayjen Sungkono No.89, Dukuh Pakis, Kota Surabaya 60225",
-			"city": "Kota Surabaya",
-			"open_hours": "10:00 - 21:30",
-			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31643.181715557002!2d110.73624039390997!3d-7.531527152523612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a14eb9b07e921%3A0x7d58036b0fe5dd1d!2sBebek%20Goreng%20Pak%20Ndut%20Kartosuro!5e0!3m2!1sen!2sid!4v1753633798168!5m2!1sen!2sid"
+			"name": "Bebek Goreng Pak Ndut Depok",
+			"address": "Jl. Siliwangi No.11, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431",
+			"province": "Jawa Barat",
+			"open_hours": "08:00 - 21:00",
+			"map_url": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31719.7915289226!2d106.8107605!3d-6.3973596!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x516aad4941cbedd%3A0x1896fb4008681248!2sBebek%20%26%20Ayam%20Goreng%20Pak%20Ndut!5e0!3m2!1sen!2sid!4v1753806289936!5m2!1sen!2sid"
+		},
+		{
+			"id": 7,
+			"name": "Bebek Goreng Pak Ndut Karawang",
+			"address": "Perumnas Bumi Telukjambe, Jl. Pandu No.300 Blok B, Sukaluyu, Telukjambe Timur, Karawang, Jawa Barat 41311",
+			"province": "Jawa Barat",
+			"open_hours": "10:00 - 22:00",
+			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.47838510884!2d107.28102609999999!3d-6.332013199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6977e11bdfd7dd%3A0x7470e10398ac376a!2sBebek%20Goreng%20dan%20Ayam%20Pak%20Ndut!5e0!3m2!1sen!2sid!4v1753806383747!5m2!1sen!2sid"
+		},
+		{
+			"id": 8,
+			"name": "Bebek Goreng Pak Ndut Kartosuro",
+			"address": "Jl. Slamet Riyadi No.159, Dusun III, Kartasura, Kec. Kartasura, Kabupaten Sukoharjo, Jawa Tengah 57169",
+			"province": "Jawa Tengah",
+			"open_hours": "08:00 - 21:00",
+			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63283.13654500314!2d110.75116957220627!3d-7.5535915544639245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a14eb9b07e921%3A0x7d58036b0fe5dd1d!2sBebek%20Goreng%20Pak%20Ndut%20Kartosuro!5e0!3m2!1sen!2sid!4v1753806480384!5m2!1sen!2sid"
+		},
+		{
+			"id": 9,
+			"name": "Bebek Goreng Pak Ndut Magelang",
+			"address": "H67H+J3R, Jl. Manggis, Sambung Kidul, Jambewangi, Kec. Secang, Kabupaten Magelang, Jawa Tengah 56195",
+			"province": "Jawa Tengah",
+			"open_hours": "10:00 - 22:00",
+			"map_url": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d8135562.207196389!2d109.2401257!3d-5.3492349!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a85d3a6c97001%3A0x7c0dadb2d60bc482!2sBebek%20%26%20Ayam%20Goreng%20Pak%20Ndut!5e0!3m2!1sen!2sid!4v1753806560738!5m2!1sen!2sid"
+		},
+		{
+			"id": 10,
+			"name": "Bebek Goreng Pak Ndut Ungaran",
+			"address": "Jl. Diponegoro No.273, Mijen, Gedanganak, Kec. Ungaran Tim., Kabupaten Semarang, Jawa Tengah 50519",
+			"province": "Jawa Tengah",
+			"open_hours": "09:00 - 21:00",
+			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.766703220293!2d110.4099423!3d-7.152951000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7088a28b7a3911%3A0xae006af86baa007f!2sBebek%20%26%20Ayam%20Goreng%20Pak%20Ndut!5e0!3m2!1sen!2sid!4v1753806637946!5m2!1sen!2sid"
+		},
+		{
+			"id": 11,
+			"name": "Bebek Goreng Pak Ndut Mulawarman",
+			"address": "Jl. Mulawarman No.11, Karang Mumus, Kec. Samarinda Kota, Kota Samarinda, Kalimantan Timur 75242",
+			"province": "Kalimantan Timur",
+			"open_hours": "11:00 - 22:00",
+			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.663338366484!2d117.155684!3d-0.5050136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67fb7ac9e15b7%3A0x461f62f23966e8f8!2sBebek%20Pak%20Ndut%20Mulawarman!5e0!3m2!1sen!2sid!4v1753806724762!5m2!1sen!2sid"
+		},
+		{
+			"id": 12,
+			"name": "Bebek Goreng Pak Ndut Sangatta",
+			"address": "Jl. Yos Sudarso IV, Tlk. Lingga, Kec. Sangatta Utara, Kabupaten Kutai Timur, Kalimantan Timur 75683",
+			"province": "Kalimantan Timur",
+			"open_hours": "09:00 - 22:00",
+			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6525916059827!2d117.52985939999999!3d0.5222296000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x320a3546efa3b7c9%3A0x46ddbe8ee96fb3bd!2sBebek%20dan%20Ayam%20Goreng%20Pak%20Ndut%20Sangatta!5e0!3m2!1sen!2sid!4v1753806811001!5m2!1sen!2sid"
+		},
+		{
+			"id": 13,
+			"name": "Bebek Goreng Pak Ndut Palembang",
+			"address": "Jl. Kolonel H. Barlian No.276, Suka Bangun, Kec. Sukarami, Kota Palembang, Sumatera Selatan 30000",
+			"province": "Sumatera Selatan",
+			"open_hours": "10:00 - 22:00",
+			"map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.5285855602124!2d104.7339253!3d-2.9507065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3b753d7488e07d%3A0x52d219b88afce3a0!2sBebek%20Pak%20Ndut%20Palembang!5e0!3m2!1sen!2sid!4v1753806902076!5m2!1sen!2sid"
 		}
 	]
 }
