@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaMapMarkerAlt, FaUser, FaGraduationCap, FaBirthdayCake } from 'react-icons/fa';
+import { Link } from 'react-router-dom'; // Tambahkan ini
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
@@ -12,8 +13,8 @@ const JobList = () => {
     fetch('/data/careers.json')
       .then((res) => res.json())
       .then((data) => {
-        setJobs(data);
-        setFilteredJobs(data);
+        setJobs(data.data);
+        setFilteredJobs(data.data);
       })
       .catch((err) => console.error('Failed to load job data:', err));
   }, []);
@@ -24,12 +25,12 @@ const JobList = () => {
 
   const filterJobs = () => {
     const results = jobs.filter((job) => {
-      const matchKeyword = `${job.position} ${job.education} ${job.location}`
+      const matchKeyword = `${job.name} ${job.location}`
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
 
       const matchPosition =
-        selectedPosition === 'All Positions' || job.position === selectedPosition;
+        selectedPosition === 'All Positions' || job.name === selectedPosition;
 
       const matchLocation =
         selectedLocation === 'All Locations' || job.location === selectedLocation;
@@ -41,7 +42,8 @@ const JobList = () => {
   };
 
   const getUniqueValues = (key) => {
-    return ['All ' + key.charAt(0).toUpperCase() + key.slice(1) + 's', ...new Set(jobs.map((job) => job[key]))];
+    const values = key === 'name' ? 'Positions' : 'Locations';
+    return ['All ' + values, ...new Set(jobs.map((job) => job[key]))];
   };
 
   return (
@@ -66,7 +68,7 @@ const JobList = () => {
               onChange={(e) => setSelectedPosition(e.target.value)}
               className="appearance-none bg-transparent focus:outline-none border-b border-gray-300 py-2 text-gray-800"
             >
-              {getUniqueValues('position').map((pos, idx) => (
+              {getUniqueValues('name').map((pos, idx) => (
                 <option key={idx} value={pos}>
                   {pos}
                 </option>
@@ -103,7 +105,7 @@ const JobList = () => {
           </div>
         </div>
 
-        {/* position - Hidden when no data */}
+        {/* Title - only show when data is available */}
         {filteredJobs.length > 0 && (
           <h2 className="text-2xl font-bold mb-6">Available Positions</h2>
         )}
@@ -112,28 +114,19 @@ const JobList = () => {
         {filteredJobs.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredJobs.map((job, idx) => (
-              <div
-                key={idx}
-                className="bg-white shadow-md rounded-lg p-5 space-y-3 border border-gray-100 hover:shadow-xl"
-              >
-                <h3 className="text-lg font-semibold">{job.position}</h3>
-                <div className="flex items-center gap-2 text-sm text-gray-700">
-                  <FaGraduationCap className="text-red-600" />
-                  <span>{job.education}</span>
+              <Link to={`/job/${job.id}`} key={idx}>
+                <div className="bg-white shadow-md rounded-lg p-5 space-y-3 border border-gray-100 hover:shadow-xl hover:border-gray-300 transition duration-300">
+                  <h3 className="text-lg font-semibold">{job.name}</h3>
+                  <div className="flex items-center gap-2 text-sm text-gray-700">
+                    <FaMapMarkerAlt className="text-red-600" />
+                    <span>{job.location}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-700">
+                    <FaBirthdayCake className="text-red-600" />
+                    <span>{job.age}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-700">
-                  <FaMapMarkerAlt className="text-red-600" />
-                  <span>{job.location}</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-700">
-                  <FaBirthdayCake className="text-red-600" />
-                  <span>{job.age}</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-700">
-                  <FaUser className="text-red-600" />
-                  <span>{job.gender}</span>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         ) : (
