@@ -1,21 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const ArticleCard = () => {
+  const [latestArticle, setLatestArticle] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('/data/articles.json');
+        const data = await res.json();
+        if (data && data.length > 0) {
+          setLatestArticle(data[0]); // Ambil artikel paling atas
+        }
+      } catch (err) {
+        console.error("Failed to fetch article data:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!latestArticle) return <div className="text-center py-10 text-white">Loading...</div>;
+
   return (
     <div className="bg-[#BA0202] p-6 md:p-20 w-full h-full flex flex-col-reverse md:flex-row items-center">
       <div className="flex-1 mt-4 md:mt-0 flex flex-col justify-center items-start ml-0 md:ml-60 mr-0 md:mr-10">
-        <h2 className="text-white text-2xl font-bold">Article title</h2>
-        <p className="text-white mt-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <p className="text-white mt-4">9 July 2025</p>
+        <h2 className="text-white text-2xl font-bold">{latestArticle.title}</h2>
+        <p className="text-white mt-2">{latestArticle.content}</p>
+        <p className="text-white mt-4">{latestArticle.date}</p>
         <button className="bg-white text-[#BA0202] hover:bg-gray-200 transition duration-300 mt-4 py-2 px-10 rounded-full font-semibold">
           Read Post
         </button>
       </div>
       <div className="flex-1">
         <img 
-          src="../../../public/images/hero.svg" 
+          src="/images/hero.svg" 
           alt="Article Illustration"
           className="bg-white w-full h-auto md:h-80 md:w-135 object-cover rounded-3xl mt-15 md:mt-0 shadow-2xl shadow-red-950 mb-5 md:mb-0"
         />

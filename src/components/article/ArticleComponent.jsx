@@ -1,110 +1,26 @@
-import React, { useState } from 'react';
-
-const articles = [
-  {
-    title: "Article One",
-    date: "July 27, 2025",
-    content:
-      "This is the content preview of Article One. It gives a brief idea of what the full article is about. The text is just a placeholder to show layout.",
-  },
-  {
-    title: "Article Two",
-    date: "July 26, 2025",
-    content:
-      "Article Two discusses key aspects of user experience in modern web applications. It highlights the importance of intuitive design.",
-  },
-  {
-    title: "Article Three",
-    date: "July 25, 2025",
-    content:
-      "In this article, we explore how AI is changing the way we interact with digital tools.",
-  },
-  {
-    title: "Article Four",
-    date: "July 24, 2025",
-    content:
-      "This article focuses on tips for optimizing React performance in large-scale applications.",
-  },
-  {
-    title: "Article Five",
-    date: "July 23, 2025",
-    content:
-      "Learn the basics of Tailwind CSS and how utility-first design can speed up development Learn the basics of Tailwind CSS and how utility-first design can speed up development.",
-  },
-  {
-    title: "Article Six",
-    date: "July 22, 2025",
-    content:
-      "A beginner-friendly guide to understanding state management in React using hooks A beginner-friendly guide to understanding state management in React using hooks.",
-  },
-  {
-    title: "Article Seven",
-    date: "July 21, 2025",
-    content: "This article explores the latest trends in mobile-first design.",
-  },
-  {
-    title: "Article Eight",
-    date: "July 20, 2025",
-    content: "How to implement dark mode using Tailwind and React hooks.",
-  },
-  {
-    title: "Article Nine",
-    date: "July 19, 2025",
-    content: "Understanding responsive grid systems with Tailwind CSS.",
-  },
-  {
-    title: "Article Ten",
-    date: "July 18, 2025",
-    content: "Integrating external APIs in React projects effectively.",
-  },
-  {
-    title: "Article Eleven",
-    date: "July 17, 2025",
-    content: "A case study on improving web accessibility in apps.",
-  },
-  {
-    title: "Article Twelve",
-    date: "July 16, 2025",
-    content: "Optimizing images and assets for faster web loading times.",
-  },
-   {
-    title: "Article Seven",
-    date: "July 21, 2025",
-    content: "This article explores the latest trends in mobile-first design.",
-  },
-  {
-    title: "Article Eight",
-    date: "July 20, 2025",
-    content: "How to implement dark mode using Tailwind and React hooks.",
-  },
-  {
-    title: "Article Nine",
-    date: "July 19, 2025",
-    content: "Understanding responsive grid systems with Tailwind CSS.",
-  },
-  {
-    title: "Article Ten",
-    date: "July 18, 2025",
-    content: "Integrating external APIs in React projects effectively.",
-  },
-  {
-    title: "Article Eleven",
-    date: "July 17, 2025",
-    content: "A case study on improving web accessibility in apps.",
-  },
-  {
-    title: "Article Twelve",
-    date: "July 16, 2025",
-    content: "Optimizing images and assets for faster web loading times.",
-  },
-];
+import React, { useEffect, useState } from 'react';
 
 const getShortContent = (text) => {
   return text.length > 85 ? text.substring(0, 85) + "..." : text;
 };
 
 const ArticleComponent = () => {
+  const [articles, setArticles] = useState([]);
   const [visibleCount, setVisibleCount] = useState(6);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const response = await fetch('../data/articles.json');
+        const data = await response.json();
+        setArticles(data);
+      } catch (error) {
+        console.error("Failed to load articles:", error);
+      }
+    };
+
+    fetchArticles();
+  }, []);
 
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 6);
@@ -132,7 +48,6 @@ const ArticleComponent = () => {
         ))}
       </div>
 
-      {/* Load More Button */}
       {visibleCount < articles.length && (
         <div className="mt-10 flex justify-center">
           <button
