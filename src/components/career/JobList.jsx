@@ -24,12 +24,12 @@ const JobList = () => {
 
   const filterJobs = () => {
     const results = jobs.filter((job) => {
-      const matchKeyword = `${job.title} ${job.education} ${job.location}`
+      const matchKeyword = `${job.position} ${job.education} ${job.location}`
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
 
       const matchPosition =
-        selectedPosition === 'All Positions' || job.title === selectedPosition;
+        selectedPosition === 'All Positions' || job.position === selectedPosition;
 
       const matchLocation =
         selectedLocation === 'All Locations' || job.location === selectedLocation;
@@ -66,7 +66,7 @@ const JobList = () => {
               onChange={(e) => setSelectedPosition(e.target.value)}
               className="appearance-none bg-transparent focus:outline-none border-b border-gray-300 py-2 text-gray-800"
             >
-              {getUniqueValues('title').map((pos, idx) => (
+              {getUniqueValues('position').map((pos, idx) => (
                 <option key={idx} value={pos}>
                   {pos}
                 </option>
@@ -103,7 +103,7 @@ const JobList = () => {
           </div>
         </div>
 
-        {/* Title - Hidden when no data */}
+        {/* position - Hidden when no data */}
         {filteredJobs.length > 0 && (
           <h2 className="text-2xl font-bold mb-6">Available Positions</h2>
         )}
@@ -116,7 +116,7 @@ const JobList = () => {
                 key={idx}
                 className="bg-white shadow-md rounded-lg p-5 space-y-3 border border-gray-100 hover:shadow-xl"
               >
-                <h3 className="text-lg font-semibold">{job.title}</h3>
+                <h3 className="text-lg font-semibold">{job.position}</h3>
                 <div className="flex items-center gap-2 text-sm text-gray-700">
                   <FaGraduationCap className="text-red-600" />
                   <span>{job.education}</span>

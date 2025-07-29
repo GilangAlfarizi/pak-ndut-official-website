@@ -32,7 +32,17 @@ const ArticleComponent = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {articles.slice(0, visibleCount).map((article, index) => (
           <div key={index} className="flex flex-col group cursor-pointer">
-            <div className="w-full h-50 bg-gray-200 rounded-md hover:shadow-xl"></div>
+            {article.image ? (
+              <img
+                src={article.image}
+                alt={article.title}
+                className="w-full h-48 object-cover rounded-md hover:shadow-xl transition-all duration-300"
+              />
+            ) : (
+              <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500 rounded-md hover:shadow-xl">
+                No image available
+              </div>
+            )}
             <h2 className="mt-4 font-semibold text-black transition-colors duration-300 group-hover:text-[#FFCC29]">
               {article.title}
             </h2>
