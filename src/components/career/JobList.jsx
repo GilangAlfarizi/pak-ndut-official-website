@@ -5,8 +5,9 @@ const JobList = () => {
   const [jobs, setJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedPosition, setSelectedPosition] = useState('All Positions');
+  const [selectedLocation, setSelectedLocation] = useState('All Locations');
 
-  // Fetch JSON data
   useEffect(() => {
     fetch('/data/careers.json')
       .then((res) => res.json())
@@ -17,16 +18,30 @@ const JobList = () => {
       .catch((err) => console.error('Failed to load job data:', err));
   }, []);
 
-  // Handle search input changes
-  const handleSearch = (e) => {
-    const keyword = e.target.value.toLowerCase();
-    setSearchTerm(keyword);
+  useEffect(() => {
+    filterJobs();
+  }, [searchTerm, selectedPosition, selectedLocation]);
 
-    const results = jobs.filter((job) =>
-      `${job.title} ${job.education} ${job.location}`.toLowerCase().includes(keyword)
-    );
+  const filterJobs = () => {
+    const results = jobs.filter((job) => {
+      const matchKeyword = `${job.title} ${job.education} ${job.location}`
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+
+      const matchPosition =
+        selectedPosition === 'All Positions' || job.title === selectedPosition;
+
+      const matchLocation =
+        selectedLocation === 'All Locations' || job.location === selectedLocation;
+
+      return matchKeyword && matchPosition && matchLocation;
+    });
 
     setFilteredJobs(results);
+  };
+
+  const getUniqueValues = (key) => {
+    return ['All ' + key.charAt(0).toUpperCase() + key.slice(1) + 's', ...new Set(jobs.map((job) => job[key]))];
   };
 
   return (
@@ -41,24 +56,57 @@ const JobList = () => {
       </div>
 
       <div className="px-6 md:px-20 py-10">
-        {/* Search Bar */}
-        <div className="flex justify-center mb-10">
-          <div className="flex w-full max-w-3xl bg-white shadow-lg rounded-xl overflow-hidden">
+        {/* Filter Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+          {/* Position Filter */}
+          <div className="flex flex-col">
+            <label className="text-xs text-gray-500 tracking-wide mb-1">POSITION</label>
+            <select
+              value={selectedPosition}
+              onChange={(e) => setSelectedPosition(e.target.value)}
+              className="appearance-none bg-transparent focus:outline-none border-b border-gray-300 py-2 text-gray-800"
+            >
+              {getUniqueValues('title').map((pos, idx) => (
+                <option key={idx} value={pos}>
+                  {pos}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Location Filter */}
+          <div className="flex flex-col">
+            <label className="text-xs text-gray-500 tracking-wide mb-1">LOCATION</label>
+            <select
+              value={selectedLocation}
+              onChange={(e) => setSelectedLocation(e.target.value)}
+              className="appearance-none bg-transparent focus:outline-none border-b border-gray-300 py-2 text-gray-800"
+            >
+              {getUniqueValues('location').map((loc, idx) => (
+                <option key={idx} value={loc}>
+                  {loc}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Keyword Search */}
+          <div className="flex flex-col">
+            <label className="text-xs text-gray-500 tracking-wide mb-1">KEYWORD</label>
             <input
               type="text"
+              placeholder="Enter keyword"
               value={searchTerm}
-              onChange={handleSearch}
-              placeholder="Enter a keyword"
-              className="flex-grow px-5 py-3 outline-none"
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="bg-transparent border-b border-gray-300 py-2 focus:outline-none text-gray-800 placeholder-gray-400"
             />
-            <button className="bg-red-700 text-white px-6 py-3 font-semibold hover:bg-red-800 transition">
-              Search
-            </button>
           </div>
         </div>
 
-        {/* Title */}
-        <h2 className="text-2xl font-bold mb-6">Available Positions</h2>
+        {/* Title - Hidden when no data */}
+        {filteredJobs.length > 0 && (
+          <h2 className="text-2xl font-bold mb-6">Available Positions</h2>
+        )}
 
         {/* Job Cards */}
         {filteredJobs.length > 0 ? (
