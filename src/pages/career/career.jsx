@@ -1,12 +1,13 @@
 import React from "react";
 import Navbar from "../../components/global/Nav";
+import JobList from "../../components/career/JobList";
 
 const Career = () => {
     return (
     <>
      <div>
         <Navbar />
-      <p>Hello Pak Ndut anjay</p>
+        <JobList />
       </div>
     </>
   );
