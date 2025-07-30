@@ -2,7 +2,7 @@ const H3Style = "text-[#BA0202] text-xl font-bold";
 
 const About = () => {
   return (
-    <div className="bg-[#BA0202] p-4 md:p-12 2xl:p-20 2xl:px-63 xl:px-32 lg:px-28 w-[100v]">
+    <div className="bg-[#BA0202] p-4 md:p-12 2xl:p-20 2xl:px-83 xl:px-48 lg:px-28 w-[100v]">
       <div className="bg-white rounded-4xl">
         <div className="xl:flex">
           <div className="flex xl:aspect-square w-full">
@@ -67,7 +67,7 @@ const About = () => {
                 </p>
               </div>
             </div>
-          </div>xl
+          </div>
           <div className="flex aspect-square w-full bg-amber-300 rounded-br-4xl xl:rounded-bl-none rounded-b-4xl">3</div>
         </div>
       </div>

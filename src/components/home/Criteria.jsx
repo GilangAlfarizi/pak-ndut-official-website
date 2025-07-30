@@ -3,7 +3,7 @@ import GIF from "../../../public/images/KriteriaLokasi.gif";
 const Criteria = () => {
   return (
     <div className="flex bg-[#BA0202] justify-center">
-      <div className="flex lg:w-[60vw] justify-center p-4 md:p-12">
+      <div className="flex lg:w-[40vw] justify-center p-4 md:p-12">
         <div className="gap-8">
           <div className="flex justify-center">
             <h2 className="text-4xl font-black text-center text-[#FFCC29]">

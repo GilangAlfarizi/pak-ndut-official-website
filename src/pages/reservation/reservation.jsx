@@ -2,11 +2,11 @@ import React from "react";
 import Navbar from "../../components/global/Nav";
 
 const Reservation = () => {
-    return (
+  return (
     <>
-     <div>
+      <div>
         <Navbar />
-      <p>Hello Pak Ndut anjay</p>
+        <p>Hello Pak Ndut anjay</p>
       </div>
     </>
   );
