@@ -41,7 +41,9 @@ const JobDetail = () => {
             >
               &larr; Back
             </button>
-            <h1 className="text-2xl md:text-3xl ml-5 md:ml-0 font-bold">{job.name} - {job.location}</h1>
+            <h1 className="text-2xl md:text-3xl ml-5 md:ml-0 font-bold">
+              {job.name} - {job.location}
+            </h1>
           </div>
         </div>
       </div>
@@ -67,9 +69,18 @@ const JobDetail = () => {
 
           {/* Button */}
           <div className="text-center">
-            <button className="bg-[#FFCC29] hover:bg-yellow-500 text-white px-6 py-2 rounded-md font-semibold">
+            <a
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=info@pakndut.co&su=Job Application for ${encodeURIComponent(
+                job.name
+              )}&body=Dear HR,%0D%0A%0D%0AI am interested in the ${encodeURIComponent(
+                job.name
+              )} position at ${encodeURIComponent(job.location)}.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#FFCC29] hover:bg-yellow-500 text-white px-6 py-2 rounded-md font-semibold inline-block"
+            >
               Apply for Job
-            </button>
+            </a>
           </div>
         </div>
       </div>

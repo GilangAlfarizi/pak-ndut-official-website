@@ -23,7 +23,7 @@ const ArticleCard = () => {
 
   return (
     <div className="bg-[#BA0202] p-6 md:p-20 w-full h-full flex flex-col-reverse md:flex-row items-center">
-      <div className="flex-1 mt-4 md:mt-0 flex flex-col justify-center items-start ml-0 md:ml-60 mr-0 md:mr-10">
+      <div className="flex-1 mt-4 md:mt-0 flex flex-col justify-center items-start ml-0 md:ml-64 mr-0 md:mr-7">
         <h2 className="text-white text-2xl font-bold">{latestArticle.title}</h2>
         <p className="text-white mt-2">{latestArticle.content}</p>
         <p className="text-white mt-4">{latestArticle.date}</p>
@@ -31,7 +31,7 @@ const ArticleCard = () => {
           Read Post
         </button>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 mr-25">
         <img 
           src="/images/hero.svg" 
           alt="Article Illustration"
