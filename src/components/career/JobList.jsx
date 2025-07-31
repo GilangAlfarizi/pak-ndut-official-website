@@ -49,11 +49,11 @@ const JobList = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Banner */}
-      <div className="bg-[#FFCC29] flex justify-center mb-0 md:mb-10">
+      <div className="bg-gray-300 flex justify-center mb-0 md:mb-10">
         <img
           src="/images/CareerBanner.png"
           alt="Job Banner"
-          className="w-full h-full shadow-lg brightness-100 md:brightness-70 mt-14 md:mt-0"
+          className="w-full h-[400px] object-cover shadow-lg brightness-100 md:brightness-70 mt-14 md:mt-0 grayscale"
         />
       </div>
 
@@ -114,7 +114,7 @@ const JobList = () => {
         {filteredJobs.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredJobs.map((job, idx) => (
-              <Link to={`/job/${job.id}`} key={idx}>
+              <Link to={`/career/${job.id}`} key={idx}>
                 <div className="bg-white shadow-md rounded-lg p-5 space-y-3 border border-gray-100 hover:shadow-xl hover:border-gray-300 transition duration-300">
                   <h3 className="text-lg font-semibold">{job.name}</h3>
                   <div className="flex items-center gap-2 text-sm text-gray-700">
