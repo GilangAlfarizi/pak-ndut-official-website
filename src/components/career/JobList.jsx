@@ -57,7 +57,7 @@ const JobList = () => {
         />
       </div>
 
-      <div className="px-6 md:px-20 py-10">
+      <div className="px-6 md:px-20 py-5 md:py-0">
         {/* Filter Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           {/* Position Filter */}

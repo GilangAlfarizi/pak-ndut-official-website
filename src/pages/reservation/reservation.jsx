@@ -5,7 +5,7 @@ const Reservation = () => {
     return (
     <>
      <div>
-        <Navbar />
+      <Navbar />
       <p>Hello Pak Ndut anjay</p>
       </div>
     </>
