@@ -5,7 +5,7 @@ const OutletCards = ({ items }) => {
     <>
       {items.map((item) => (
         <div className="bg-white shadow-md rounded-4xl hover:shadow-xl hover:border-gray-300 transition duration-300 2xl:flex">
-          <div className="h-100 w-full 2xl:w-100 xl:aspect-square bg-yellow-300 rounded-4xl"></div>
+          <div className="w-full 2xl:h-100 aspect-video 2xl:aspect-[20/19] bg-gray-100 rounded-4xl"></div>
           <div className="p-5 items-center flex w-full">
             <div className="w-full">
               <h3 className="text-lg font-semibold">{item.name}</h3>
