@@ -31,11 +31,11 @@ const ArticleCard = () => {
           Read Post
         </button>
       </div>
-      <div className="flex-1 mr-25">
+      <div className="flex-1 mr-1 md:mr-25">
         <img 
           src="/images/hero.svg" 
           alt="Article Illustration"
-          className="bg-white w-full h-auto md:h-80 md:w-135 object-cover rounded-3xl mt-15 md:mt-0 shadow-2xl shadow-red-950 mb-5 md:mb-0"
+          className="bg-white w-full h-auto md:h-80 md:w-135 object-cover rounded-2xl md:rounded-3x mt-15 md:mt-0 shadow-2xl shadow-red-950 mb-5 md:mb-0"
         />
       </div>
     </div>

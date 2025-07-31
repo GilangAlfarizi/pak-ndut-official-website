@@ -41,7 +41,7 @@ const JobDetail = () => {
             >
               &larr; Back
             </button>
-            <h1 className="text-2xl md:text-3xl ml-5 md:ml-0 font-bold">
+            <h1 className="text-2xl md:text-3xl ml-5 md:ml-0 font-bold mr-2 md:mr-0">
               {job.name} - {job.location}
             </h1>
           </div>
