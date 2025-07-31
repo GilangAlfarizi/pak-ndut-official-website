@@ -20,7 +20,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="flex aspect-square w-full bg-amber-300 xl:rounded-tr-4xl">1</div>
+          <div className="flex aspect-square w-full bg-amber-300 xl:rounded-tr-4xl"></div>
         </div>
         <div className="xl:flex">
           <div className="flex xl:aspect-square w-full order-last">
@@ -49,7 +49,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="flex aspect-square w-full bg-amber-300">2</div>
+          <div className="flex aspect-square w-full bg-amber-300"></div>
         </div>
         <div className="xl:flex">
           <div className="flex xl:aspect-square w-full">
@@ -68,7 +68,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="flex aspect-square w-full bg-amber-300 rounded-br-4xl xl:rounded-bl-none rounded-b-4xl">3</div>
+          <div className="flex aspect-square w-full bg-amber-300 rounded-br-4xl xl:rounded-bl-none rounded-b-4xl"></div>
         </div>
       </div>
     </div>

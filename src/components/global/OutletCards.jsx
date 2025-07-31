@@ -1,0 +1,35 @@
+import { Link } from "react-router-dom";
+
+const OutletCards = ({ items }) => {
+  return (
+    <>
+      {items.map((item) => (
+        <div className="bg-white shadow-md rounded-4xl hover:shadow-xl hover:border-gray-300 transition duration-300 2xl:flex">
+          <div className="h-100 w-full 2xl:w-100 xl:aspect-square bg-yellow-300 rounded-4xl"></div>
+          <div className="p-5 items-center flex w-full">
+            <div className="w-full">
+              <h3 className="text-lg font-semibold">{item.name}</h3>
+              <div className="flex items-center gap-2 text-sm text-gray-700">
+                <span>{item.address}</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-700 w-100%">
+                <Link
+                  to={`https://wa.me/${item.phone}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full"
+                >
+                  <button className="text-white bg-[#BA0202] hover:bg-gray-200 transition duration-300 mt-4 py-2 px-10 rounded-full font-semibold w-full 2xl:w-auto">
+                    Contact Us
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+};
+
+export default OutletCards;
