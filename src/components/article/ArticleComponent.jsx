@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const getShortContent = (text) => {
   return text.length > 85 ? text.substring(0, 85) + "..." : text;
@@ -7,13 +8,14 @@ const getShortContent = (text) => {
 const ArticleComponent = () => {
   const [articles, setArticles] = useState([]);
   const [visibleCount, setVisibleCount] = useState(6);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch('../data/articles.json');
+        const response = await fetch('/data/articles.json');
         const data = await response.json();
-        setArticles(data);
+        setArticles(data.data);
       } catch (error) {
         console.error("Failed to load articles:", error);
       }
@@ -26,12 +28,20 @@ const ArticleComponent = () => {
     setVisibleCount((prevCount) => prevCount + 6);
   };
 
+  const handleClick = (id) => {
+    navigate(`/article/${id}`);
+  };
+
   return (
     <div className="px-6 py-10 max-w-7xl mx-auto">
       <h1 className="text-2xl font-bold mb-8">Latest Articles</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {articles.slice(0, visibleCount).map((article, index) => (
-          <div key={index} className="flex flex-col group cursor-pointer">
+        {articles.slice(0, visibleCount).map((article) => (
+          <div
+            key={article.id}
+            className="flex flex-col group cursor-pointer"
+            onClick={() => handleClick(article.id)}
+          >
             {article.image ? (
               <img
                 src={article.image}

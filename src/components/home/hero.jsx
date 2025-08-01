@@ -18,7 +18,7 @@ const Hero = () => {
           Fried duck the Indonesian way.
         </h1>
         <Link
-          to="https://wa.me/+6282265687777"
+          to="https://wa.me/+6281333072010"
           target="_blank"
           rel="noopener noreferrer"
         >
