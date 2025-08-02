@@ -1,5 +1,5 @@
 import React from "react";
-import hero from "../../../public/images/hero.svg";
+import hero from "../../../public/images/HeroBackground.svg";
 import { Link } from "react-router-dom"; // Impor Link jika menggunakan routing
 
 const Hero = () => {

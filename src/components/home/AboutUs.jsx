@@ -20,7 +20,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="flex aspect-square w-full bg-gray-100 xl:rounded-tr-4xl"></div>
+          <div className="flex aspect-square w-full bg-gray-100 xl:rounded-tr-4xl justify-center items-center">No image available</div>
         </div>
         <div className="xl:flex">
           <div className="flex xl:aspect-square w-full order-last">
@@ -49,7 +49,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="flex aspect-square w-full bg-gray-100"></div>
+          <div className="flex aspect-square w-full bg-gray-100 justify-center items-center">No image available</div>
         </div>
         <div className="xl:flex">
           <div className="flex xl:aspect-square w-full">
@@ -68,7 +68,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="flex aspect-square w-full bg-gray-100 rounded-br-4xl xl:rounded-bl-none rounded-b-4xl"></div>
+          <div className="flex aspect-square w-full bg-gray-100 rounded-br-4xl xl:rounded-bl-none rounded-b-4xl justify-center items-center">No image available</div>
         </div>
       </div>
     </div>
