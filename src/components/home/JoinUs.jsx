@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const JoinUs = () => {
   return (
     <div className="flex justify-center h-180  items-center">
-      <div className="grid gap-4 text-center">
+      <div className="grid gap-4 text-center p-4">
         <div>
           <h2 className="text-4xl font-black text-center text-[#BA0202]">
             Join Our Family.

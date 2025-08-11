@@ -46,24 +46,24 @@ const Outlets = () => {
 
   return (
     <div className="bg-[#BA0202] p-4 md:p-12 2xl:p-20 2xl:px-83 xl:px-32 lg:px-28 w-[100v]">
-      <div className="bg-white rounded-4xl">
+      <div className="bg-white rounded-4xl py-8">
         <div className="p-4 xl:p-20 ">
           <h2 className="text-4xl font-black text-center text-[#BA0202]">
             Our Outlets
           </h2>
           <img src={GIF} alt="GIF" className="rounded-4xl mt-8" />
         </div>
-        <div className="flex bg-[#FFCC29] h-80 p-8 justify-center">
+        <div className="flex bg-[#FFCC29] h-40 xl:h-60 p-8 justify-center">
           <div className="w-240 flex">
             <div className="flex w-full h-full justify-center items-center">
               <div className="text-center text-[#BA0202]">
-                <h4 className="text-8xl font-bold">{outletCount}</h4>
+                <h4 className="text-6xl xl:text-8xl font-bold">{outletCount}</h4>
                 <p className="font-bold">Outlets</p>
               </div>
             </div>
             <div className="flex w-full h-full justify-center items-center">
               <div className="text-center text-[#BA0202]">
-                <h4 className="text-8xl font-bold">12</h4>
+                <h4 className="text-6xl xl:text-8xl font-bold">12</h4>
                 <p className="font-bold">Cities</p>
               </div>
             </div>
