@@ -5,25 +5,36 @@ const LanguageContext = createContext();
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState("id");
 
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "id" ? "en" : "id"));
+  // ✅ fungsi untuk ganti bahasa dari dropdown
+  const changeLanguage = (lang) => {
+    setLanguage(lang);
   };
 
+  // ✅ text translation
   const translations = {
     id: {
-      // Navbar
       menu: ["Beranda", "Karir", "Artikel", "Reservasi"],
-
+      about: "Tentang Kami",
+      contact: "Kontak",
     },
 
     en: {
-      // Navbar
       menu: ["Home", "Career", "Article", "Reservation"],
-},
+      about: "About Us",
+      contact: "Contact",
+    },
   };
 
+  // ✅ list bahasa untuk dropdown
+  const availableLanguages = [
+    { code: "id", label: "Indonesia" },
+    { code: "en", label: "English" },
+  ];
+
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, translations }}>
+    <LanguageContext.Provider
+      value={{ language, changeLanguage, translations, availableLanguages }}
+    >
       {children}
     </LanguageContext.Provider>
   );

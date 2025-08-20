@@ -2,13 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import logo from "../../../public/images/logo.svg";
 import { NavLink } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
+import { ChevronDown } from "lucide-react"; // ✅ icon dropdown
 
 const Navbar = () => {
   const [isTransparent, setIsTransparent] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
   const menuRef = useRef(null);
+  const langRef = useRef(null);
 
-  const { language, toggleLanguage } = useLanguage(); // ✅ Ambil dari context
+  const { language, changeLanguage } = useLanguage();
 
   const handleScroll = () => {
     setIsTransparent(window.scrollY <= 50);
@@ -18,9 +21,16 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  // Tutup kalau klik di luar
   const handleClickOutside = (event) => {
-    if (isOpen && menuRef.current && !menuRef.current.contains(event.target)) {
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(event.target) &&
+      langRef.current &&
+      !langRef.current.contains(event.target)
+    ) {
       setIsOpen(false);
+      setIsLangOpen(false);
     }
   };
 
@@ -32,7 +42,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen]);
+  }, []);
 
   const menuLabels = {
     id: ["Beranda", "Karir", "Artikel", "Reservasi"],
@@ -57,7 +67,7 @@ const Navbar = () => {
           <img src={logo} className="h-10" alt="Pakndut Logo" />
         </NavLink>
 
-        {/* Menu + Toggle di kanan */}
+        {/* Menu + Language + Hamburger */}
         <div className="flex items-center space-x-4">
           {/* Menu */}
           <div
@@ -93,33 +103,50 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* Toggle Bahasa (custom switch) */}
-          <button
-            onClick={toggleLanguage}
-            className={`relative w-12 h-6 flex items-center rounded-full transition-colors duration-300 ${
-              language === "id" ? "bg-gray-400" : "bg-[#FFCC29]"
-            }`}
-          >
-            <span
-              className={`absolute left-1 text-[10px] font-bold ${
-                language === "id" ? "text-white" : "text-white/60"
-              }`}
+          {/* Dropdown Bahasa */}
+          <div className="relative inline-block" ref={langRef}>
+            {/* Trigger */}
+            <button
+              onClick={() => setIsLangOpen((prev) => !prev)}
+              className={`flex items-center gap-1 px-3 py-1 rounded-md text-sm font-medium transition 
+                ${isTransparent ? "bg-transparent text-white" : "bg-transparent text-black"}`}
             >
-              ID
-            </span>
-            <span
-              className={`absolute right-1 text-[10px] font-bold ${
-                language === "en" ? "text-white" : "text-white/60"
-              }`}
-            >
-              EN
-            </span>
-            <span
-              className={`absolute bg-white w-5 h-5 rounded-full shadow-md transform transition-transform duration-300 ${
-                language === "id" ? "translate-x-0 left-0.5" : "translate-x-6"
-              }`}
-            ></span>
-          </button>
+              {language.toUpperCase()}
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-200 ${
+                  isLangOpen ? "rotate-180" : "rotate-0"
+                }`}
+              />
+            </button>
+
+            {/* Dropdown */}
+            {isLangOpen && (
+              <ul
+                className={`absolute right-0 top-full mt-1 w-28 rounded-md shadow-lg z-50
+                  ${isTransparent ? "bg-black/80 text-white" : "bg-white text-black"}`}
+              >
+                <li
+                  onClick={() => {
+                    changeLanguage("id");
+                    setIsLangOpen(false);
+                  }}
+                  className="px-4 py-2 cursor-pointer hover:bg-[#FFCC29] hover:text-black"
+                >
+                  ID
+                </li>
+                <li
+                  onClick={() => {
+                    changeLanguage("en");
+                    setIsLangOpen(false);
+                  }}
+                  className="px-4 py-2 cursor-pointer hover:bg-[#FFCC29] hover:text-black"
+                >
+                  EN
+                </li>
+              </ul>
+            )}
+          </div>
 
           {/* Hamburger */}
           <button
