@@ -21,7 +21,7 @@ const Criteria = () => {
     },
     id: {
       title: "Kriteria Lokasi",
-      p1: `Kemitraan waralaba Bebek & Ayam Goreng Pak Ndut berlangsung selama 5 tahun 
+      p1: `Franchise Bebek & Ayam Goreng Pak Ndut berlangsung selama 5 tahun 
            dan dapat diperpanjang. Kemitraan ini dijalankan dengan sistem biaya royalti, 
            dan selama periode 5 tahun tim kami akan membantu investor dalam operasional. 
            Biaya royalti sebesar 5% dari penjualan bahan baku (bebek dan ayam) dan/atau 

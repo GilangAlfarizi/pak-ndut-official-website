@@ -22,9 +22,9 @@ const Footer = () => {
       profile: "Profil Kami",
       visionMission: "Visi & Misi",
       article: "Artikel",
-      franchise: "Waralaba",
+      franchise: "Franchise",
       careers: "Karier",
-      join: "Bergabunglah",
+      join: "Bergabung",
     },
   };
 
