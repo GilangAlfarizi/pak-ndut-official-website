@@ -1,10 +1,26 @@
 import { useEffect, useState } from "react";
 import AccordionOutlet from "../global/AccordionOutlet";
 import GIF from "../../../public/images/Pak_Ndut_Lokasi_Cabang_Outlet[1].gif";
+import { useLanguage } from "../../context/LanguageContext"; // ambil bahasa
 
 const Outlets = () => {
   const [accordionData, setAccordionData] = useState([]);
-  const [outletCount, setOutletCount] = useState(0); // Tambahkan state outletCount
+  const [outletCount, setOutletCount] = useState(0);
+  const { language } = useLanguage(); // ambil pilihan bahasa
+
+  // Translasi langsung di sini
+  const translations = {
+    en: {
+      title: "Our Outlets",
+      outletLabel: "Outlets",
+      cityLabel: "Cities",
+    },
+    id: {
+      title: "Outlet Kami",
+      outletLabel: "Outlet",
+      cityLabel: "Kota",
+    },
+  };
 
   useEffect(() => {
     fetch("/data/outlets.json")
@@ -39,7 +55,7 @@ const Outlets = () => {
         });
 
         setAccordionData(groupedData);
-        setOutletCount(rawData.data.length); // Hitung jumlah outlet
+        setOutletCount(rawData.data.length); 
       })
       .catch((err) => console.error("Failed to fetch outlet data:", err));
   }, []);
@@ -49,7 +65,7 @@ const Outlets = () => {
       <div className="bg-white rounded-4xl">
         <div className="p-4 xl:p-20 ">
           <h2 className="text-4xl font-black text-center text-[#BA0202]">
-            Our Outlets
+            {translations[language].title}
           </h2>
           <img src={GIF} alt="GIF" className="rounded-4xl mt-8" />
         </div>
@@ -58,13 +74,13 @@ const Outlets = () => {
             <div className="flex w-full h-full justify-center items-center">
               <div className="text-center text-[#BA0202]">
                 <h4 className="text-8xl font-bold">{outletCount}</h4>
-                <p className="font-bold">Outlets</p>
+                <p className="font-bold">{translations[language].outletLabel}</p>
               </div>
             </div>
             <div className="flex w-full h-full justify-center items-center">
               <div className="text-center text-[#BA0202]">
                 <h4 className="text-8xl font-bold">12</h4>
-                <p className="font-bold">Cities</p>
+                <p className="font-bold">{translations[language].cityLabel}</p>
               </div>
             </div>
           </div>

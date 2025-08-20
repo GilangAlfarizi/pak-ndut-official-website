@@ -1,14 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../../context/LanguageContext"; // ambil bahasa
 
 const ArticleCard = () => {
   const [latestArticle, setLatestArticle] = useState(null);
   const navigate = useNavigate();
+  const { language } = useLanguage(); // ambil pilihan bahasa
+
+  // Translasi langsung
+  const translations = {
+    en: {
+      loading: "Loading...",
+      readPost: "Read Post",
+    },
+    id: {
+      loading: "Memuat...",
+      readPost: "Baca Selengkapnya",
+    },
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/data/articles.json');
+        const res = await fetch("/data/articles.json");
         const data = await res.json();
         if (data && Array.isArray(data.data) && data.data.length > 0) {
           setLatestArticle(data.data[0]); // Ambil artikel paling atas
@@ -21,7 +35,12 @@ const ArticleCard = () => {
     fetchData();
   }, []);
 
-  if (!latestArticle) return <div className="text-center py-10 text-white">Loading...</div>;
+  if (!latestArticle)
+    return (
+      <div className="text-center py-10 text-white">
+        {translations[language].loading}
+      </div>
+    );
 
   return (
     <div className="bg-[#BA0202] p-6 md:p-20 w-full h-full flex flex-col-reverse md:flex-row items-center">
@@ -34,14 +53,14 @@ const ArticleCard = () => {
           className="bg-white text-[#BA0202] hover:bg-gray-200 transition duration-300 mt-4 py-2 px-10 rounded-full font-semibold"
           onClick={() => navigate(`/article/${latestArticle.id}`)}
         >
-          Read Post
+          {translations[language].readPost}
         </button>
       </div>
 
       {/* Image Section */}
       <div className="flex-1 mr-1 md:mr-25">
         {latestArticle.image ? (
-          <img 
+          <img
             src={latestArticle.image}
             alt="Article Illustration"
             className="bg-white w-full h-auto md:h-80 md:w-135 object-cover rounded-2xl md:rounded-3x mt-15 md:mt-0 shadow-2xl shadow-red-950 mb-5 md:mb-0"

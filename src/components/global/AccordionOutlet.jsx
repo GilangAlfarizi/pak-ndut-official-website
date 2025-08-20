@@ -1,10 +1,26 @@
 import { useState } from "react";
+import { useLanguage } from "../../context/LanguageContext"; // 🔑 ambil bahasa global
 
 const AccordionOutlet = ({ items }) => {
   const [openIndex, setOpenIndex] = useState(null);
+  const { language } = useLanguage(); // 🔑 toggle bahasa global
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
+  };
+
+  // 🔑 Translation dictionary
+  const translations = {
+    en: {
+      address: "Address",
+      openHours: "Open Hours",
+      contactNumber: "Contact Number",
+    },
+    id: {
+      address: "Alamat",
+      openHours: "Jam Buka",
+      contactNumber: "Nomor Kontak",
+    },
   };
 
   return (
@@ -50,6 +66,7 @@ const AccordionOutlet = ({ items }) => {
             {provinceItem.outlets.map((outlet) => (
               <div key={outlet.id} className="py-5">
                 <div className="md:flex gap-4">
+                  {/* Map iframe */}
                   <div className="w-full md:w-1/2 aspect-[4/3]">
                     <iframe
                       src={outlet.map_url}
@@ -62,20 +79,28 @@ const AccordionOutlet = ({ items }) => {
                       className="rounded-lg"
                     ></iframe>
                   </div>
-                  <div className="md:w-1/2 text-smspace-y-2 ">
+
+                  {/* Outlet info */}
+                  <div className="md:w-1/2 text-sm space-y-2">
                     <div>
                       <p className="font-bold text-2xl">{outlet.name}</p>
                     </div>
                     <div>
-                      <p className="font-semibold text-xl">Address</p>
+                      <p className="font-semibold text-xl">
+                        {translations[language].address}
+                      </p>
                       <p>{outlet.address}</p>
                     </div>
                     <div>
-                      <p className="font-semibold text-xl">Open Hours</p>
+                      <p className="font-semibold text-xl">
+                        {translations[language].openHours}
+                      </p>
                       <p>{outlet.open_hours}</p>
                     </div>
                     <div>
-                      <p className="font-semibold text-xl">Contact Number</p>
+                      <p className="font-semibold text-xl">
+                        {translations[language].contactNumber}
+                      </p>
                       <p>{outlet.phone}</p>
                     </div>
                   </div>
