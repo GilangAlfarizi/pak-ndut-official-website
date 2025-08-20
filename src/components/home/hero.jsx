@@ -1,22 +1,34 @@
 import React from "react";
 import hero from "../../../public/images/HeroBackground.svg";
-import { Link } from "react-router-dom"; // Impor Link jika menggunakan routing
+import Bebek from "../../../public/images/BebekEnak.png"; // contoh gambar tambahan
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
+      {/* Background */}
       <img
         className="absolute inset-0 object-cover w-full h-full brightness-30"
         src={hero}
         alt="Hero Image"
       />
+
+      {/* Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4 p-2">
-        <h1 className="text-2xl md:text-6xl text-white font-black text-center ">
-          Classic Taste, Modern Twist.
+        {/* Gambar di atas teks */}
+        <img
+          src={Bebek}
+          alt="Logo"
+          className="w-32 md:w-48 mb-4" // atur ukuran sesuai kebutuhan
+        />
+
+        <h1 className="text-2xl md:text-6xl text-white font-black text-center">
+          Classic Taste, Modern Twist
         </h1>
         <h1 className="text-2xl md:text-6xl text-white font-black text-center">
-          Fried duck the Indonesian way.
+          The Indonesian Way Fried Duck
         </h1>
+
         <Link
           to="https://wa.me/+6281333072010"
           target="_blank"
