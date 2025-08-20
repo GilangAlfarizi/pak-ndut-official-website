@@ -12,10 +12,12 @@ const ArticleCard = () => {
     en: {
       loading: "Loading...",
       readPost: "Read Post",
+      noImage: "No image available",
     },
     id: {
       loading: "Memuat...",
       readPost: "Baca Selengkapnya",
+      noImage: "Gambar tidak tersedia",
     },
   };
 
@@ -68,7 +70,7 @@ const ArticleCard = () => {
         ) : (
           <div className="w-92 h-55 md:h-80 md:w-135 bg-gray-200 flex items-center justify-center rounded-2xl mt-15 md:mt-0 shadow-2xl shadow-red-950 mb-5 md:mb-0">
             <p className="text-gray-600 text-base sm:text-lg md:text-xl font-semibold text-center px-4">
-              No image available
+              {translations[language].noImage}
             </p>
           </div>
         )}
