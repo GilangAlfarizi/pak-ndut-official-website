@@ -1,4 +1,6 @@
 import { useLanguage } from "../../context/LanguageContext";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const H3Style = "text-[#BA0202] text-xl font-bold";
 
@@ -50,21 +52,64 @@ const About = () => {
 
   const t = translations[language];
 
+  const ImageWithFallback = ({ src, alt, className }) => {
+    const [error, setError] = useState(false);
+
+    if (error) {
+      return <span className="text-gray-500 text-sm">No image available</span>;
+    }
+
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className={`object-cover w-full h-full ${className}`}
+        onError={() => setError(true)}
+      />
+    );
+  };
+
+  // Komponen teks dengan animasi scroll
+  const AnimatedText = ({ children, className }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+    return (
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
+  };
+
   return (
-    <div className="bg-[#BA0202] p-4 md:p-12 2xl:p-20 2xl:px-83 xl:px-48 lg:px-28 w-[100v]">
+    <div className="bg-[#BA0202] p-4 md:p-12 2xl:p-20 2xl:px-83 xl:px-48 lg:px-28 w-full">
       <div className="bg-white rounded-4xl">
         {/* About Us */}
         <div className="xl:flex">
           <div className="flex xl:aspect-square w-full">
             <div className="flex p-4 items-center">
               <div>
-                <h3 className={H3Style}>{t.aboutTitle}</h3>
-                <p className="mt-2">{t.aboutText}</p>
+                <AnimatedText>
+                  <h3 className={H3Style}>{t.aboutTitle}</h3>
+                </AnimatedText>
+                <AnimatedText>
+                  <p className="mt-2">{t.aboutText}</p>
+                </AnimatedText>
               </div>
             </div>
           </div>
           <div className="flex aspect-square w-full bg-gray-100 xl:rounded-tr-4xl justify-center items-center">
-            No image available
+            <ImageWithFallback
+              src="/images/about.jpg"
+              alt="About Us"
+              className="xl:rounded-tr-4xl"
+            />
           </div>
         </div>
 
@@ -73,19 +118,31 @@ const About = () => {
           <div className="flex xl:aspect-square w-full order-last">
             <div className="flex p-4 items-center">
               <div>
-                <h3 className={H3Style}>{t.visionMission}</h3>
-                <p className="mt-2">{t.visionMissionText}</p>
-                <h4 className="mt-4 font-bold">{t.vision}</h4>
-                <p className="mt-1">{t.visionText}</p>
-                <h4 className="mt-2 font-bold">{t.mission}</h4>
+                <AnimatedText>
+                  <h3 className={H3Style}>{t.visionMission}</h3>
+                </AnimatedText>
+                <AnimatedText>
+                  <p className="mt-2">{t.visionMissionText}</p>
+                </AnimatedText>
+                <AnimatedText>
+                  <h4 className="mt-4 font-bold">{t.vision}</h4>
+                </AnimatedText>
+                <AnimatedText>
+                  <p className="mt-1">{t.visionText}</p>
+                </AnimatedText>
+                <AnimatedText>
+                  <h4 className="mt-2 font-bold">{t.mission}</h4>
+                </AnimatedText>
                 {t.missions.map((m, i) => (
-                  <p key={i}>{`${i + 1}. ${m}`}</p>
+                  <AnimatedText key={i}>
+                    <p>{`${i + 1}. ${m}`}</p>
+                  </AnimatedText>
                 ))}
               </div>
             </div>
           </div>
           <div className="flex aspect-square w-full bg-gray-100 justify-center items-center">
-            No image available
+            <ImageWithFallback src="/images/Visimisi.jpg" alt="Vision & Mission" />
           </div>
         </div>
 
@@ -94,13 +151,21 @@ const About = () => {
           <div className="flex xl:aspect-square w-full">
             <div className="flex p-4 items-center">
               <div>
-                <h3 className={H3Style}>{t.history}</h3>
-                <p className="mt-2">{t.historyText}</p>
+                <AnimatedText>
+                  <h3 className={H3Style}>{t.history}</h3>
+                </AnimatedText>
+                <AnimatedText>
+                  <p className="mt-2">{t.historyText}</p>
+                </AnimatedText>
               </div>
             </div>
           </div>
           <div className="flex aspect-square w-full bg-gray-100 rounded-br-4xl xl:rounded-bl-none rounded-b-4xl justify-center items-center">
-            No image available
+            <ImageWithFallback
+              src="/images/History.jpg"
+              alt="History"
+              className="rounded-br-4xl xl:rounded-bl-none rounded-b-4xl"
+            />
           </div>
         </div>
       </div>

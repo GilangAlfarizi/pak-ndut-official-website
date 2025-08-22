@@ -1,5 +1,6 @@
 import { useLanguage } from "../../context/LanguageContext"; // ambil bahasa
 import GIF from "../../../public/images/KriteriaLokasi.gif";
+import { motion } from "framer-motion";
 
 const Criteria = () => {
   const { language } = useLanguage(); // ambil pilihan bahasa
@@ -40,21 +41,39 @@ const Criteria = () => {
         <div className="gap-8">
           {/* Title */}
           <div className="flex justify-center">
-            <h2 className="text-4xl font-black text-center text-[#FFCC29]">
+            <motion.h2
+              className="text-4xl font-black text-center text-[#FFCC29]"
+              initial={{ opacity: 0, y: -30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
               {translations[language].title}
-            </h2>
+            </motion.h2>
           </div>
 
           {/* GIF */}
-          <div className="my-8">
+          <motion.div
+            className="my-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
             <img src={GIF} alt="GIF" className="rounded-4xl" />
-          </div>
+          </motion.div>
 
           {/* Content */}
-          <div className="text-white space-y-4">
+          <motion.div
+            className="text-white space-y-4"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             <p>{translations[language].p1}</p>
             <p>{translations[language].p2}</p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

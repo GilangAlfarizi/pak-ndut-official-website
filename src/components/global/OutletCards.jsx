@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"; // import framer motion
 import { useLanguage } from "../../context/LanguageContext"; // ambil bahasa
 
 const OutletCards = ({ items }) => {
@@ -18,10 +19,14 @@ const OutletCards = ({ items }) => {
 
   return (
     <>
-      {items.map((item) => (
-        <div
+      {items.map((item, index) => (
+        <motion.div
           key={item.id}
-          className="bg-white shadow-md rounded-4xl hover:shadow-xl hover:border-gray-300 transition duration-300 2xl:flex"
+          initial={{ opacity: 0, y: 40 }} // mulai transparan & turun
+          animate={{ opacity: 1, y: 0 }} // animasi muncul
+          transition={{ duration: 0.1}}
+          whileHover={{ scale: 1.03 }} // efek hover smooth
+          className="bg-white shadow-md rounded-4xl hover:shadow-2xl hover:border-gray-200 transition duration-300 2xl:flex"
         >
           <div className="flex w-full 2xl:h-100 aspect-video 2xl:aspect-[20/19] bg-gray-100 rounded-4xl items-center justify-center">
             {translations[language].noImage}
@@ -46,7 +51,7 @@ const OutletCards = ({ items }) => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
     </>
   );

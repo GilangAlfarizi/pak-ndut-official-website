@@ -9,7 +9,7 @@ const ALL_LOC = '__ALL_LOC__';
 const JobList = () => {
   const { language } = useLanguage();
 
-  // Translasi langsung di komponen (ikuti pola yang sama)
+  // Translasi langsung di komponen
   const translations = {
     en: {
       position: 'POSITION',
@@ -21,6 +21,8 @@ const JobList = () => {
       availablePositions: 'Available Positions',
       noPosition: 'No Position Available',
       bannerAlt: 'Job Banner',
+      bannerTitle: 'Career at Pak Ndut',
+      bannerSubtitle: 'Join our big family and grow together.',
     },
     id: {
       position: 'POSISI',
@@ -32,6 +34,8 @@ const JobList = () => {
       availablePositions: 'Posisi Tersedia',
       noPosition: 'Tidak Ada Posisi Tersedia',
       bannerAlt: 'Banner Karier',
+      bannerTitle: 'Karir di Pak Ndut',
+      bannerSubtitle: 'Bergabunglah dengan keluarga besar kami dan berkembang bersama.',
     },
   };
 
@@ -77,12 +81,16 @@ const JobList = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Banner */}
-      <div className="bg-gray-300 flex justify-center mb-0 md:mb-10">
+      <div className="bg-white relative w-full h-[300px] md:h-[400px] lg:h-[450px]">
         <img
           src="/images/CareerBanner4.jpg"
           alt={t.bannerAlt}
-          className="w-full h-[400px] object-cover shadow-lg brightness-100 md:brightness-70 mt-14 md:mt-0 grayscale"
+          className="w-full h-[300px] md:h-[400px] object-cover shadow-lg brightness-100 md:brightness-70 grayscale"
         />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
+          <h1 className="text-3xl md:text-5xl font-bold">{t.bannerTitle}</h1>
+          <p className="mt-3 text-lg">{t.bannerSubtitle}</p>
+        </div>
       </div>
 
       <div className="px-6 md:px-20 py-5 md:py-0 ">
