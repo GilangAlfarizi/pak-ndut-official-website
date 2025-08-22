@@ -6,6 +6,7 @@ import { useLanguage } from "../../context/LanguageContext"; // ambil bahasa
 const Outlets = () => {
   const [accordionData, setAccordionData] = useState([]);
   const [outletCount, setOutletCount] = useState(0);
+  const [provinceCount, setProvinceCount] = useState(0);
   const { language } = useLanguage(); // ambil pilihan bahasa
 
   // Translasi langsung di sini
@@ -13,12 +14,12 @@ const Outlets = () => {
     en: {
       title: "Our Outlets",
       outletLabel: "Outlets",
-      cityLabel: "Cities",
+      cityLabel: "Provinces",
     },
     id: {
       title: "Outlet Kami",
       outletLabel: "Outlet",
-      cityLabel: "Kota",
+      cityLabel: "Provinsi",
     },
   };
 
@@ -27,8 +28,11 @@ const Outlets = () => {
       .then((res) => res.json())
       .then((rawData) => {
         const groupedData = [];
+        const provinceSet = new Set();
 
         rawData.data.forEach((item) => {
+          provinceSet.add(item.province); // kumpulkan provinsi unik
+
           const existingProvince = groupedData.find(
             (entry) => entry.province === item.province
           );
@@ -56,6 +60,7 @@ const Outlets = () => {
 
         setAccordionData(groupedData);
         setOutletCount(rawData.data.length); 
+        setProvinceCount(provinceSet.size); // jumlah provinsi unik
       })
       .catch((err) => console.error("Failed to fetch outlet data:", err));
   }, []);
@@ -79,7 +84,7 @@ const Outlets = () => {
             </div>
             <div className="flex w-full h-full justify-center items-center">
               <div className="text-center text-[#BA0202]">
-                <h4 className="text-6xl xl:text-8xl font-bold">12</h4>
+                <h4 className="text-6xl xl:text-8xl font-bold">{provinceCount}</h4>
                 <p className="font-bold">{translations[language].cityLabel}</p>
               </div>
             </div>
