@@ -106,7 +106,7 @@ const About = () => {
           </div>
           <div className="flex aspect-square w-full bg-gray-100 xl:rounded-tr-4xl justify-center items-center">
             <ImageWithFallback
-              src="/images/about.jpg"
+              src="/images/about_us.JPG"
               alt="About Us"
               className="xl:rounded-tr-4xl"
             />

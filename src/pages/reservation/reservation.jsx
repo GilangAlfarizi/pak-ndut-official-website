@@ -39,7 +39,7 @@ const Reservation = () => {
       <Navbar />
 
       {/* Hero / Banner */}
-      <div className="relative w-full h-[300px] md:h-[400px] lg:h-[450px] bg-[#BA0202]">
+      <div className="relative w-full  bg-[#BA0202]">
         <img
           src="/images/ReservationBanner.jpg"
           alt={t.bannerAlt}
@@ -53,7 +53,7 @@ const Reservation = () => {
 
       {/* Outlet Cards */}
       {OutletsData.length > 0 ? (
-        <div className="grid gap-8 bg-[#BA0202] p-4 py-10 xl:py-3 xl:px-40 justify-center grid-cols-1 md:grid-cols-2">
+        <div className="grid gap-8 bg-[#BA0202] p-4 py-10 xl:py-10 xl:px-40 justify-center grid-cols-1 md:grid-cols-2">
           <OutletCards items={OutletsData} />
         </div>
       ) : (
