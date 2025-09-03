@@ -1,144 +1,144 @@
-{
-  "data": [
-    {
-      "id": 1,
-      "name": "Waitress",
-      "location": "Bebek Goreng Pak Ndut Kartasura",
-      "age": "18 - 27 tahun",
-      "description": "Melayani pelanggan dengan ramah dan cepat, memastikan area kerja bersih, serta membantu proses penyajian makanan.",
-      "requirement": [
-        "Pengalaman kerja sebagai Waitress",
-        "Komunikatif dan sabar",
-        "Bersedia kerja shift",
-        "Minimal lulusan SMA",
-        "Mampu bekerja dalam tim"
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Chef",
-      "location": "Bebek Goreng Pak Ndut Semarang",
-      "age": "18 - 35 tahun",
-      "description": "Bertanggung jawab atas pengolahan makanan, menjaga kualitas rasa dan kebersihan dapur.",
-      "requirement": [
-        "Pengalaman sebagai Chef minimal 1 tahun",
-        "Mengerti standar kebersihan dapur",
-        "Bersedia kerja lembur",
-        "Kreatif dalam menciptakan menu",
-        "Lulusan tata boga diutamakan"
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Cashier",
-      "location": "Bebek Goreng Pak Ndut Surabaya",
-      "age": "18 - 30 tahun",
-      "description": "Melayani transaksi pembayaran, mencatat pengeluaran dan pemasukan, serta memberikan laporan harian.",
-      "requirement": [
-        "Pengalaman sebagai kasir",
-        "Teliti dan jujur",
-        "Terbiasa menggunakan POS",
-        "Komunikatif",
-        "Lulusan minimal SMA"
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Cleaning Service",
-      "location": "Bebek Goreng Pak Ndut Solo",
-      "age": "20 - 40 tahun",
-      "description": "Menjaga kebersihan area restoran, dapur, dan toilet setiap hari.",
-      "requirement": [
-        "Pengalaman tidak diutamakan",
-        "Rajin dan jujur",
-        "Bisa bekerja pagi dan malam",
-        "Mampu mengoperasikan alat kebersihan sederhana",
-        "Berperilaku sopan"
-      ]
-    },
-    {
-      "id": 5,
-      "name": "Barista",
-      "location": "Bebek Goreng Pak Ndut Yogyakarta",
-      "age": "20 - 30 tahun",
-      "description": "Membuat dan menyajikan minuman kopi dan non-kopi sesuai standar.",
-      "requirement": [
-        "Pengalaman membuat kopi (manual brew & espresso)",
-        "Bersedia dilatih",
-        "Komunikatif dan ceria",
-        "Lulusan SMA/SMK",
-        "Mampu bekerja di bawah tekanan"
-      ]
-    },
-    {
-      "id": 6,
-      "name": "Marketing Staff",
-      "location": "Bebek Goreng Pak Ndut Jakarta",
-      "age": "22 - 35 tahun",
-      "description": "Menjalankan strategi promosi dan pemasaran restoran secara online dan offline.",
-      "requirement": [
-        "Minimal D3 Pemasaran",
-        "Paham media sosial & iklan digital",
-        "Kreatif dan inovatif",
-        "Berpengalaman minimal 1 tahun",
-        "Bisa bekerja mandiri"
-      ]
-    },
-    {
-      "id": 7,
-      "name": "Driver",
-      "location": "Bebek Goreng Pak Ndut Klaten",
-      "age": "25 - 40 tahun",
-      "description": "Mengantarkan bahan baku dan logistik restoran antar cabang.",
-      "requirement": [
-        "Memiliki SIM A aktif",
-        "Berpengalaman mengemudi kendaraan operasional",
-        "Tahu rute Jawa Tengah",
-        "Sehat jasmani & rohani",
-        "Disiplin waktu"
-      ]
-    },
-    {
-      "id": 8,
-      "name": "Admin Gudang",
-      "location": "Bebek Goreng Pak Ndut Boyolali",
-      "age": "20 - 35 tahun",
-      "description": "Mencatat keluar masuk barang di gudang, membuat laporan stok harian dan bulanan.",
-      "requirement": [
-        "Mampu menggunakan Excel",
-        "Teliti dan sistematis",
-        "Berpengalaman di bidang logistik",
-        "Bersedia lembur jika dibutuhkan",
-        "Lulusan D3 Akuntansi / Administrasi"
-      ]
-    },
-    {
-      "id": 9,
-      "name": "Security",
-      "location": "Bebek Goreng Pak Ndut Kudus",
-      "age": "25 - 40 tahun",
-      "description": "Menjaga keamanan lingkungan restoran, memantau parkir, dan membantu pelanggan jika dibutuhkan.",
-      "requirement": [
-        "Pengalaman minimal 2 tahun",
-        "Memiliki sertifikat satpam (Gada Pratama)",
-        "Sigap dan bertanggung jawab",
-        "Tidak merokok saat bertugas",
-        "Tinggi badan minimal 165cm"
-      ]
-    },
-    {
-      "id": 10,
-      "name": "Food Delivery",
-      "location": "Bebek Goreng Pak Ndut Magelang",
-      "age": "18 - 35 tahun",
-      "description": "Mengantarkan makanan ke pelanggan sesuai alamat dan waktu yang ditentukan.",
-      "requirement": [
-        "Punya motor pribadi",
-        "SIM C aktif",
-        "Jujur dan bertanggung jawab",
-        "Paham rute lokal",
-        "Siap kerja fleksibel"
-      ]
-    }
-  ]
-}
+// {
+//   "data": [
+//     {
+//       "id": 1,
+//       "name": "Waitress",
+//       "location": "Bebek Goreng Pak Ndut Kartasura",
+//       "age": "18 - 27 tahun",
+//       "description": "Melayani pelanggan dengan ramah dan cepat, memastikan area kerja bersih, serta membantu proses penyajian makanan.",
+//       "requirement": [
+//         "Pengalaman kerja sebagai Waitress",
+//         "Komunikatif dan sabar",
+//         "Bersedia kerja shift",
+//         "Minimal lulusan SMA",
+//         "Mampu bekerja dalam tim"
+//       ]
+//     },
+//     {
+//       "id": 2,
+//       "name": "Chef",
+//       "location": "Bebek Goreng Pak Ndut Semarang",
+//       "age": "18 - 35 tahun",
+//       "description": "Bertanggung jawab atas pengolahan makanan, menjaga kualitas rasa dan kebersihan dapur.",
+//       "requirement": [
+//         "Pengalaman sebagai Chef minimal 1 tahun",
+//         "Mengerti standar kebersihan dapur",
+//         "Bersedia kerja lembur",
+//         "Kreatif dalam menciptakan menu",
+//         "Lulusan tata boga diutamakan"
+//       ]
+//     },
+//     {
+//       "id": 3,
+//       "name": "Cashier",
+//       "location": "Bebek Goreng Pak Ndut Surabaya",
+//       "age": "18 - 30 tahun",
+//       "description": "Melayani transaksi pembayaran, mencatat pengeluaran dan pemasukan, serta memberikan laporan harian.",
+//       "requirement": [
+//         "Pengalaman sebagai kasir",
+//         "Teliti dan jujur",
+//         "Terbiasa menggunakan POS",
+//         "Komunikatif",
+//         "Lulusan minimal SMA"
+//       ]
+//     },
+//     {
+//       "id": 4,
+//       "name": "Cleaning Service",
+//       "location": "Bebek Goreng Pak Ndut Solo",
+//       "age": "20 - 40 tahun",
+//       "description": "Menjaga kebersihan area restoran, dapur, dan toilet setiap hari.",
+//       "requirement": [
+//         "Pengalaman tidak diutamakan",
+//         "Rajin dan jujur",
+//         "Bisa bekerja pagi dan malam",
+//         "Mampu mengoperasikan alat kebersihan sederhana",
+//         "Berperilaku sopan"
+//       ]
+//     },
+//     {
+//       "id": 5,
+//       "name": "Barista",
+//       "location": "Bebek Goreng Pak Ndut Yogyakarta",
+//       "age": "20 - 30 tahun",
+//       "description": "Membuat dan menyajikan minuman kopi dan non-kopi sesuai standar.",
+//       "requirement": [
+//         "Pengalaman membuat kopi (manual brew & espresso)",
+//         "Bersedia dilatih",
+//         "Komunikatif dan ceria",
+//         "Lulusan SMA/SMK",
+//         "Mampu bekerja di bawah tekanan"
+//       ]
+//     },
+//     {
+//       "id": 6,
+//       "name": "Marketing Staff",
+//       "location": "Bebek Goreng Pak Ndut Jakarta",
+//       "age": "22 - 35 tahun",
+//       "description": "Menjalankan strategi promosi dan pemasaran restoran secara online dan offline.",
+//       "requirement": [
+//         "Minimal D3 Pemasaran",
+//         "Paham media sosial & iklan digital",
+//         "Kreatif dan inovatif",
+//         "Berpengalaman minimal 1 tahun",
+//         "Bisa bekerja mandiri"
+//       ]
+//     },
+//     {
+//       "id": 7,
+//       "name": "Driver",
+//       "location": "Bebek Goreng Pak Ndut Klaten",
+//       "age": "25 - 40 tahun",
+//       "description": "Mengantarkan bahan baku dan logistik restoran antar cabang.",
+//       "requirement": [
+//         "Memiliki SIM A aktif",
+//         "Berpengalaman mengemudi kendaraan operasional",
+//         "Tahu rute Jawa Tengah",
+//         "Sehat jasmani & rohani",
+//         "Disiplin waktu"
+//       ]
+//     },
+//     {
+//       "id": 8,
+//       "name": "Admin Gudang",
+//       "location": "Bebek Goreng Pak Ndut Boyolali",
+//       "age": "20 - 35 tahun",
+//       "description": "Mencatat keluar masuk barang di gudang, membuat laporan stok harian dan bulanan.",
+//       "requirement": [
+//         "Mampu menggunakan Excel",
+//         "Teliti dan sistematis",
+//         "Berpengalaman di bidang logistik",
+//         "Bersedia lembur jika dibutuhkan",
+//         "Lulusan D3 Akuntansi / Administrasi"
+//       ]
+//     },
+//     {
+//       "id": 9,
+//       "name": "Security",
+//       "location": "Bebek Goreng Pak Ndut Kudus",
+//       "age": "25 - 40 tahun",
+//       "description": "Menjaga keamanan lingkungan restoran, memantau parkir, dan membantu pelanggan jika dibutuhkan.",
+//       "requirement": [
+//         "Pengalaman minimal 2 tahun",
+//         "Memiliki sertifikat satpam (Gada Pratama)",
+//         "Sigap dan bertanggung jawab",
+//         "Tidak merokok saat bertugas",
+//         "Tinggi badan minimal 165cm"
+//       ]
+//     },
+//     {
+//       "id": 10,
+//       "name": "Food Delivery",
+//       "location": "Bebek Goreng Pak Ndut Magelang",
+//       "age": "18 - 35 tahun",
+//       "description": "Mengantarkan makanan ke pelanggan sesuai alamat dan waktu yang ditentukan.",
+//       "requirement": [
+//         "Punya motor pribadi",
+//         "SIM C aktif",
+//         "Jujur dan bertanggung jawab",
+//         "Paham rute lokal",
+//         "Siap kerja fleksibel"
+//       ]
+//     }
+//   ]
+// }

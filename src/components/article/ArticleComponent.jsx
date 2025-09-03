@@ -50,7 +50,11 @@ const ArticleComponent = () => {
     navigate(`/article/${id}`);
   };
 
-  return (
+  return articles.length === 0 ? (
+    <div className="px-6 py-10 max-w-7xl mx-auto text-center text-gray-500">
+      No articles has been published yet
+    </div>
+  ) : (
     <div className="px-6 py-10 max-w-7xl mx-auto">
       <h1 className="text-2xl font-bold mb-8">{translations[language].title}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
