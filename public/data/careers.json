@@ -139,6 +139,20 @@
         "Paham rute lokal",
         "Siap kerja fleksibel"
       ]
+    },
+     {
+      "id": 11,
+      "name": "Food Delivery",
+      "location": "Bebek Goreng Pak Ndut Magelang",
+      "age": "18 - 35 tahun",
+      "description": "Mengantarkan makanan ke pelanggan sesuai alamat dan waktu yang ditentukan.",
+      "requirement": [
+        "Punya motor pribadi",
+        "SIM C aktif",
+        "Jujur dan bertanggung jawab",
+        "Paham rute lokal",
+        "Siap kerja fleksibel"
+      ]
     }
   ]
 }
