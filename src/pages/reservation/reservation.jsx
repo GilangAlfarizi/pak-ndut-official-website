@@ -2,6 +2,7 @@ import OutletCards from "../../components/global/OutletCards";
 import { useEffect, useState } from "react";
 import Navbar from "../../components/global/Nav";
 import { useLanguage } from "../../context/LanguageContext";
+import Footer from "../../components/global/Foot";
 
 const Reservation = () => {
   const [OutletsData, SetOutletsData] = useState([]);
@@ -61,6 +62,7 @@ const Reservation = () => {
           <p className="text-center">{t.noOutlet}</p>
         </div>
       )}
+    <Footer />
     </div>
   );
 };

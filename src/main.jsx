@@ -12,7 +12,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <LanguageProvider>
       <App />
-      <Footer />
     </LanguageProvider>
   </React.StrictMode>
 );

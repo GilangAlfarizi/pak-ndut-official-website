@@ -6,6 +6,7 @@ import SlidingMenu from "../../components/home/menu";
 import Outlets from "../../components/home/Outlets";
 import Criteria from "../../components/home/Criteria";
 import JoinUs from "../../components/home/JoinUs";
+import Footer from "../../components/global/Foot";
 const LandingPage = () => {
   return (
     <>
@@ -17,6 +18,7 @@ const LandingPage = () => {
         <Outlets />
         <Criteria />
         <JoinUs />
+        <Footer />
       </div>
     </>
   );

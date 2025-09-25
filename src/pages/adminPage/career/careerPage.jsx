@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaEdit, FaTrash, FaPlus, FaEye } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../../../components/adminCompenents/Sidebar";
 
 // 🔹 Modal Detail
 const DetailModal = ({ career, onClose }) => {
@@ -59,7 +60,8 @@ const AdminCareers = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen relative">
+    <Sidebar>
+    <div className="p-6 bg-gray-50 min-h-screen relative w-full">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Careers Management</h1>
         <button
@@ -127,6 +129,7 @@ const AdminCareers = () => {
         />
       )}
     </div>
+    </Sidebar>
   );
 };
 
