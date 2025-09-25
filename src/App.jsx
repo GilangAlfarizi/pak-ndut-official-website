@@ -22,7 +22,8 @@ function App(){
       <Route path="/career/:id" element={<CareerDetail />} />
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/admin-careers" element={<AdminCareers />} />
-      <Route path="/admin-careers/newcareer" element={<CareerForm />} />
+      <Route path="/admin-careers/new" element={<CareerForm />} />
+      <Route path="/admin-careers/edit/:id" element={<CareerForm />} />
     </Routes>
     </BrowserRouter>
     </>

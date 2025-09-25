@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const CareerForm = () => {
   const navigate = useNavigate();
-  const { id } = useParams(); // akan ada jika mode edit
+  const { id } = useParams(); // edit jika ada id
   const [formData, setFormData] = useState({
     id: "",
     name: "",
@@ -15,7 +15,7 @@ const CareerForm = () => {
 
   useEffect(() => {
     if (id) {
-      // 🟠 Mode Edit -> Ambil data berdasarkan ID
+      // Edit mode
       fetch("/data/careers.json")
         .then((res) => res.json())
         .then((data) => {
@@ -23,8 +23,8 @@ const CareerForm = () => {
           if (found) setFormData({ ...found, requirement: found.requirement || [] });
         });
     } else {
-      // 🟢 Mode Create -> Generate ID otomatis
-      const newId = Date.now(); // contoh pakai timestamp (unik)
+      // Create mode -> generate ID
+      const newId = Date.now();
       setFormData((prev) => ({ ...prev, id: newId.toString() }));
     }
   }, [id]);
@@ -44,10 +44,8 @@ const CareerForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (id) {
-      // TODO: update ke backend
       alert(`Career updated! (ID: ${formData.id})`);
     } else {
-      // TODO: create ke backend
       alert(`Career created! (ID: ${formData.id})`);
     }
     navigate("/admin/careers");
@@ -59,12 +57,11 @@ const CareerForm = () => {
         onSubmit={handleSubmit}
         className="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg space-y-4"
       >
-        {/* ✅ Logo di atas Form */}
         <div className="flex justify-center mb-8">
           <img
-            src="/images/logo.svg" // 🔹 Ganti path logo sesuai lokasi file kamu
+            src="/images/logo.svg" // ganti sesuai path logo
             alt="Company Logo"
-            className="h-15 w-auto object-contain"
+            className="h-16 w-auto object-contain"
           />
         </div>
 
@@ -72,7 +69,7 @@ const CareerForm = () => {
           {id ? "Edit Career" : "Create Career"}
         </h1>
 
-        {/* ID (Auto Generated) */}
+        {/* ID */}
         <div>
           <label className="block text-sm font-medium text-gray-700">ID</label>
           <input
@@ -137,9 +134,7 @@ const CareerForm = () => {
 
         {/* Requirements */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Requirements
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Requirements</label>
           <textarea
             value={formData.requirement.join("\n")}
             onChange={handleRequirementChange}
@@ -154,7 +149,7 @@ const CareerForm = () => {
         <div className="flex justify-end gap-3">
           <button
             type="button"
-            onClick={() => navigate("/admin/careers")}
+            onClick={() => navigate("/admin-careers")}
             className="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-md"
           >
             Cancel
