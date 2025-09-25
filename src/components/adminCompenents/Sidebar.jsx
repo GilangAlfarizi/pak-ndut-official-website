@@ -1,6 +1,6 @@
 const Sidebar = (props) => {
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       <button
         data-drawer-target="default-sidebar"
         data-drawer-toggle="default-sidebar"
