@@ -59,7 +59,16 @@ const CareerForm = () => {
         onSubmit={handleSubmit}
         className="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg space-y-4"
       >
-        <h1 className="text-xl font-bold mb-4">
+        {/* ✅ Logo di atas Form */}
+        <div className="flex justify-center mb-8">
+          <img
+            src="/images/logo.svg" // 🔹 Ganti path logo sesuai lokasi file kamu
+            alt="Company Logo"
+            className="h-15 w-auto object-contain"
+          />
+        </div>
+
+        <h1 className="text-xl font-bold mb-4 text-center">
           {id ? "Edit Career" : "Create Career"}
         </h1>
 
