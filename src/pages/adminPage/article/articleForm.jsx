@@ -1,65 +1,23 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.snow.css";
 
-const provinces = [
-  "Aceh",
-  "Sumatera Utara",
-  "Sumatera Barat",
-  "Riau",
-  "Kepulauan Riau",
-  "Jambi",
-  "Sumatera Selatan",
-  "Bangka Belitung",
-  "Bengkulu",
-  "Lampung",
-  "DKI Jakarta",
-  "Jawa Barat",
-  "Banten",
-  "Jawa Tengah",
-  "DI Yogyakarta",
-  "Jawa Timur",
-  "Bali",
-  "Nusa Tenggara Barat",
-  "Nusa Tenggara Timur",
-  "Kalimantan Barat",
-  "Kalimantan Tengah",
-  "Kalimantan Selatan",
-  "Kalimantan Timur",
-  "Kalimantan Utara",
-  "Sulawesi Utara",
-  "Gorontalo",
-  "Sulawesi Tengah",
-  "Sulawesi Barat",
-  "Sulawesi Selatan",
-  "Sulawesi Tenggara",
-  "Maluku",
-  "Maluku Utara",
-  "Papua",
-  "Papua Barat",
-  "Papua Tengah",
-  "Papua Pegunungan",
-  "Papua Selatan",
-  "Papua Barat Daya"
-];
-
-const OutletForm = () => {
+const ArticleForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [formData, setFormData] = useState({
     id: "",
-    name: "",
-    address: "",
-    province: "",
-    open_hours: "",
-    phone: "",
-    map_url: "",
-    image: ""
+    title: "",
+    date: "",
+    content: "",
+    image: "",
   });
 
   useEffect(() => {
     if (id) {
       // ===== Edit Mode =====
-      fetch("/data/outlets.json")
+      fetch("/data/articles.json")
         .then((res) => res.json())
         .then((data) => {
           const found = data.data.find((o) => String(o.id) === id);
@@ -68,7 +26,12 @@ const OutletForm = () => {
     } else {
       // ===== Create Mode =====
       const newId = Date.now();
-      setFormData((prev) => ({ ...prev, id: newId.toString() }));
+      const today = new Date().toISOString().split("T")[0]; // yyyy-mm-dd
+      setFormData((prev) => ({
+        ...prev,
+        id: newId.toString(),
+        date: today,
+      }));
     }
   }, [id]);
 
@@ -77,7 +40,10 @@ const OutletForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // ===== Handle Upload Gambar =====
+  const handleContentChange = (value) => {
+    setFormData((prev) => ({ ...prev, content: value }));
+  };
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -97,18 +63,18 @@ const OutletForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (id) {
-      alert(`Outlet updated! (ID: ${formData.id})`);
+      alert(`Article updated! (ID: ${formData.id})`);
     } else {
-      alert(`Outlet created! (ID: ${formData.id})`);
+      alert(`Article created! (ID: ${formData.id})`);
     }
-    navigate("/admin/outlets");
+    navigate("/admin/articles");
   };
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen flex justify-center">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg space-y-4"
+        className="bg-white shadow-lg rounded-lg p-6 w-full max-w-2xl space-y-4"
       >
         <div className="flex justify-center mb-6">
           <img
@@ -119,7 +85,7 @@ const OutletForm = () => {
         </div>
 
         <h1 className="text-xl font-bold text-center mb-4">
-          {id ? "Edit Outlet" : "Create Outlet"}
+          {id ? "Edit Article" : "Create Article"}
         </h1>
 
         {/* ID */}
@@ -139,92 +105,51 @@ const OutletForm = () => {
           )}
         </div>
 
-        {/* Name */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Name</label>
-          <input
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full border rounded-md p-2"
-            required
-          />
-        </div>
-
-        {/* Address */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Address</label>
-          <textarea
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            className="w-full border rounded-md p-2 h-20"
-            required
-          />
-        </div>
-
-        {/* Province - Dropdown */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Province</label>
-          <select
-            name="province"
-            value={formData.province}
-            onChange={handleChange}
-            className="w-full border rounded-md p-2"
-            required
-          >
-            <option value="">-- Select Province --</option>
-            {provinces.map((prov) => (
-              <option key={prov} value={prov}>
-                {prov}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Open Hours */}
+        {/* Title */}
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            Open Hours
+            Title
           </label>
           <input
-            name="open_hours"
-            value={formData.open_hours}
+            name="title"
+            value={formData.title}
             onChange={handleChange}
             className="w-full border rounded-md p-2"
-            placeholder="e.g. 09:00 - 21:00"
+            required
           />
         </div>
 
-        {/* Phone */}
+        {/* Date */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Phone</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Date
+          </label>
           <input
-            name="phone"
-            value={formData.phone}
+            type="date"
+            name="date"
+            value={formData.date}
             onChange={handleChange}
             className="w-full border rounded-md p-2"
-            placeholder="+628123456789"
+            required
           />
         </div>
 
-        {/* Map URL */}
+        {/* Content pakai ReactQuill-New */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Map URL</label>
-          <textarea
-            name="map_url"
-            value={formData.map_url}
-            onChange={handleChange}
-            className="w-full border rounded-md p-2 h-20"
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Content
+          </label>
+          <ReactQuill
+            theme="snow"
+            value={formData.content}
+            onChange={handleContentChange}
+            className="h-40 mb-12"
           />
-          <p className="text-xs text-gray-500 mt-1">
-            Masukkan embed Google Maps (iframe src).
-          </p>
         </div>
 
         {/* Upload Image */}
         <div>
-          <label className="block text-sm font-small text-gray-700">
+          <label className="block text-sm font-medium text-gray-700">
             Upload Image
           </label>
           <input
@@ -249,7 +174,7 @@ const OutletForm = () => {
         <div className="flex justify-end gap-3 pt-2">
           <button
             type="button"
-            onClick={() => navigate("/admin-outlets")}
+            onClick={() => navigate("/admin/articles")}
             className="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-md"
           >
             Cancel
@@ -266,4 +191,4 @@ const OutletForm = () => {
   );
 };
 
-export default OutletForm;
+export default ArticleForm;

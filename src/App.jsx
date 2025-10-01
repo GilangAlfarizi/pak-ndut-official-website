@@ -11,6 +11,8 @@ import CareerForm from "./pages/adminPage/career/CareerForm.jsx";
 import LoginPage from "./pages/adminPage/login/loginPage.jsx";
 import AdminOutlets from "./pages/adminPage/outlet/outletPage.jsx";
 import OutletForm from "./pages/adminPage/outlet/outletForm.jsx";
+import AdminArticles from "./pages/adminPage/article/articlePage.jsx";
+import ArticleForm from "./pages/adminPage/article/articleForm.jsx";
 
 function App(){
   return (
@@ -31,6 +33,9 @@ function App(){
       <Route path="/admin-outlets" element={<AdminOutlets />} />
       <Route path="/admin-outlets/new" element={<OutletForm />} />
       <Route path="/admin-outlets/edit/:id" element={<OutletForm />} />
+      <Route path="/admin-articles" element={<AdminArticles />} />
+      <Route path="/admin-articles/new" element={<ArticleForm />} />
+      <Route path="/admin-articles/edit/:id" element={<ArticleForm />} />
     </Routes>
     </BrowserRouter>
     </>
