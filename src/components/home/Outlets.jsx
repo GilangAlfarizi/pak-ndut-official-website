@@ -24,7 +24,7 @@ const Outlets = () => {
   };
 
   useEffect(() => {
-    fetch("/data/outlets.json")
+    fetch("https://pak-ndut-backend-production.up.railway.app/outlets")
       .then((res) => res.json())
       .then((rawData) => {
         const groupedData = [];
@@ -43,7 +43,7 @@ const Outlets = () => {
             address: item.address,
             province: item.province,
             open_hours: item.open_hours,
-            map_url: item.map_url,
+            mapUrl: item.mapUrl,
             phone: item.phone,
           };
 

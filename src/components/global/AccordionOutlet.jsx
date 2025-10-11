@@ -69,7 +69,7 @@ const AccordionOutlet = ({ items }) => {
                   {/* Map iframe */}
                   <div className="w-full md:w-1/2 aspect-[4/3]">
                     <iframe
-                      src={outlet.map_url}
+                      src={outlet.mapUrl}
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}

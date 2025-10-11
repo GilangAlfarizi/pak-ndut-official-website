@@ -48,7 +48,7 @@ const JobList = () => {
   const [selectedLocation, setSelectedLocation] = useState(ALL_LOC);
 
   useEffect(() => {
-    fetch('/data/careers.json')
+    fetch('https://pak-ndut-backend-production.up.railway.app/careers')
       .then((res) => res.json())
       .then((data) => {
         const list = Array.isArray(data?.data) ? data.data : [];

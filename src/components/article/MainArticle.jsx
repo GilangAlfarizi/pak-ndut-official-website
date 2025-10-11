@@ -24,7 +24,7 @@ const ArticleCard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/data/articles.json");
+        const res = await fetch("https://pak-ndut-backend-production.up.railway.app/articles");
         const data = await res.json();
         if (data && Array.isArray(data.data) && data.data.length > 0) {
           setLatestArticle(data.data[0]); // Ambil artikel paling atas

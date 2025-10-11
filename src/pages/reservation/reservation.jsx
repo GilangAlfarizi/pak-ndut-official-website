@@ -27,7 +27,7 @@ const Reservation = () => {
   const t = translations[language];
 
   useEffect(() => {
-    fetch("/data/outlets.json")
+    fetch("https://pak-ndut-backend-production.up.railway.app/outlets")
       .then((res) => res.json())
       .then((json) => {
         SetOutletsData(json.data);
