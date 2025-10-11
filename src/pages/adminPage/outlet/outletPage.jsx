@@ -20,7 +20,7 @@ const DetailModal = ({ outlet, onClose }) => {
           <div className="space-y-2">
             <p className="font-semibold">Map:</p>
             <iframe
-              src={outlet.map_url}
+              src={outlet.mapUrl}
               title="Outlet Map"
               className="w-full h-64 rounded-md border"
               allowFullScreen=""
@@ -60,7 +60,7 @@ const AdminOutlets = () => {
 
   // 🔹 Fetch Data
   useEffect(() => {
-    fetch("/data/outlets.json")
+    fetch("https://pak-ndut-backend-production.up.railway.app/outlets")
       .then((res) => res.json())
       .then((data) => setOutlets(Array.isArray(data?.data) ? data.data : []))
       .catch((err) => console.error("Failed to load outlets:", err));

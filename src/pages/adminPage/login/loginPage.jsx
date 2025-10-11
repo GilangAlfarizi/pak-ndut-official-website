@@ -1,7 +1,8 @@
 import { useState } from "react";
+import axios from "axios";
 
 const LoginPage = () => {
-  const [username, setUsername] = useState(""); // email/username input
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -10,30 +11,45 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const res = await fetch("/data/account.json");
-      const json = await res.json();
-      const accounts = json.data || [];
-
-      // Cari user yang sesuai (username bisa email)
-      const foundUser = accounts.find(
-        (acc) =>
-          acc.email.toLowerCase() === username.toLowerCase() &&
-          acc.password === password
+      // 🔹 Kirim request ke backend
+      const response = await axios.post(
+        "https://pak-ndut-backend-production.up.railway.app/users/login",
+        {
+          username: username,
+          password: password,
+        }
       );
 
-      if (foundUser) {
-        // ✅ Login sukses
-        alert(`Welcome, ${foundUser.email}!`);
-        // contoh: simpan ke localStorage
-        localStorage.setItem("user", JSON.stringify(foundUser));
-        // redirect ke halaman admin / dashboard
-        window.location.href = "/admin"; 
+      const userData = response?.data?.data;
+
+      if (userData) {
+        // ✅ Simpan token dan data user ke localStorage
+        const token = userData.accessToken;
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(userData));
+
+        alert(`Welcome, ${username}!`);
+        window.location.href = "/admin";
       } else {
-        setError("Username atau password salah.");
+        setError("Login gagal: data pengguna tidak ditemukan.");
       }
-    } catch (err) {
-      console.error("Failed to fetch accounts:", err);
-      setError("Terjadi kesalahan server.");
+    } catch (error) {
+      console.error("Login error:", error);
+
+      if (error.response) {
+        const status = error.response.status;
+
+        if (status === 400 || status === 404) {
+          setError("Username atau password tidak valid.");
+        } else if (status === 401) {
+          setError("Autentikasi gagal, periksa kredensial Anda.");
+        } else {
+          setError("Terjadi kesalahan server.");
+        }
+      } else {
+        setError("Gagal terhubung ke server.");
+      }
     }
   };
 
@@ -44,7 +60,7 @@ const LoginPage = () => {
           {/* 🔹 Logo */}
           <div className="flex justify-center mb-4">
             <img
-              src="/images/logo.svg" // pastikan path logo benar
+              src="/images/logo.svg"
               alt="Pak Ndut Logo"
               className="w-auto h-16 object-contain"
             />
@@ -58,13 +74,13 @@ const LoginPage = () => {
             <p className="text-red-600 text-center text-sm">{error}</p>
           )}
 
-          {/* Username / Email */}
+          {/* Username */}
           <div>
             <label
               htmlFor="username"
               className="block mb-2 text-sm font-medium text-gray-900"
             >
-              Email
+              Username
             </label>
             <input
               type="text"
@@ -73,7 +89,7 @@ const LoginPage = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="email@example.com"
+              placeholder="username"
               required
             />
           </div>
