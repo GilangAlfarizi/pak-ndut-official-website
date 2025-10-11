@@ -13,104 +13,34 @@ import AdminOutlets from "./pages/adminPage/outlet/outletPage.jsx";
 import OutletForm from "./pages/adminPage/outlet/outletForm.jsx";
 import AdminArticles from "./pages/adminPage/article/articlePage.jsx";
 import ArticleForm from "./pages/adminPage/article/articleForm.jsx";
+import NotFound from "./pages/notfound.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx"; // ✅ import
 
-function App() {
+function App()  {
   return (
+    <>
     <BrowserRouter>
-      <Routes>
-        {/* Public routes */}
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/article" element={<Article />} />
-        <Route path="/reservation" element={<Reservation />} />
-        <Route path="/article/:id" element={<ArticleDetails />} />
-        <Route path="/career/:id" element={<CareerDetail />} />
-        <Route path="/admin-login" element={<LoginPage />} />
-
-        {/* Protected routes (hanya bisa diakses jika sudah login) */}
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute>
-              <AdminPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin-careers"
-          element={
-            <ProtectedRoute>
-              <AdminCareers />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin-careers/new"
-          element={
-            <ProtectedRoute>
-              <CareerForm />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin-careers/edit/:id"
-          element={
-            <ProtectedRoute>
-              <CareerForm />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin-outlets"
-          element={
-            <ProtectedRoute>
-              <AdminOutlets />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin-outlets/new"
-          element={
-            <ProtectedRoute>
-              <OutletForm />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin-outlets/edit/:id"
-          element={
-            <ProtectedRoute>
-              <OutletForm />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin-articles"
-          element={
-            <ProtectedRoute>
-              <AdminArticles />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin-articles/new"
-          element={
-            <ProtectedRoute>
-              <ArticleForm />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin-articles/edit/:id"
-          element={
-            <ProtectedRoute>
-              <ArticleForm />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/career" element={<Career />} />
+      <Route path="/article" element={<Article />} />
+      <Route path="/reservation" element={<Reservation />} />
+      <Route path="/article/:id" element={<ArticleDetails />} />
+      <Route path="/career/:id" element={<CareerDetail />} />
+      <Route path="/admin" element={<AdminPage />} />
+      <Route path="/admin-login" element={<LoginPage />} />
+      <Route path="/admin-careers" element={<AdminCareers />} />
+      <Route path="/admin-careers/new" element={<CareerForm />} />
+      <Route path="/admin-careers/edit/:id" element={<CareerForm />} />
+      <Route path="/admin-outlets" element={<AdminOutlets />} />
+      <Route path="/admin-outlets/new" element={<OutletForm />} />
+      <Route path="/admin-outlets/edit/:id" element={<OutletForm />} />
+      <Route path="/admin-articles" element={<AdminArticles />} />
+      <Route path="/admin-articles/new" element={<ArticleForm />} />
+      <Route path="/admin-articles/edit/:id" element={<ArticleForm />} />
+    </Routes>
     </BrowserRouter>
+    </>
   );
 }
 
