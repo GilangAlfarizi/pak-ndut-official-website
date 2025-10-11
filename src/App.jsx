@@ -14,6 +14,7 @@ import OutletForm from "./pages/adminPage/outlet/outletForm.jsx";
 import AdminArticles from "./pages/adminPage/article/articlePage.jsx";
 import ArticleForm from "./pages/adminPage/article/articleForm.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx"; // ✅ import
+import NotFound from "./pages/notfound.jsx";
 
 function App() {
   return (
@@ -109,6 +110,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
