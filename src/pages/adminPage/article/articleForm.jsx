@@ -174,7 +174,7 @@ const ArticleForm = () => {
         <div className="flex justify-end gap-3 pt-2">
           <button
             type="button"
-            onClick={() => navigate("/admin/articles")}
+            onClick={() => navigate("/admin-articles")}
             className="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-md"
           >
             Cancel
