@@ -13,33 +13,35 @@ import AdminOutlets from "./pages/adminPage/outlet/outletPage.jsx";
 import OutletForm from "./pages/adminPage/outlet/outletForm.jsx";
 import AdminArticles from "./pages/adminPage/article/articlePage.jsx";
 import ArticleForm from "./pages/adminPage/article/articleForm.jsx";
+import NotFound from "./pages/notfound.jsx";
 
-function App(){
+function App() {
   return (
     <>
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/career" element={<Career />} />
-      <Route path="/article" element={<Article />} />
-      <Route path="/reservation" element={<Reservation />} />
-      <Route path="/article/:id" element={<ArticleDetails />} />
-      <Route path="/career/:id" element={<CareerDetail />} />
-      <Route path="/admin" element={<AdminPage />} />
-      <Route path="/admin-login" element={<LoginPage />} />
-      <Route path="/admin-careers" element={<AdminCareers />} />
-      <Route path="/admin-careers/new" element={<CareerForm />} />
-      <Route path="/admin-careers/edit/:id" element={<CareerForm />} />
-      <Route path="/admin-outlets" element={<AdminOutlets />} />
-      <Route path="/admin-outlets/new" element={<OutletForm />} />
-      <Route path="/admin-outlets/edit/:id" element={<OutletForm />} />
-      <Route path="/admin-articles" element={<AdminArticles />} />
-      <Route path="/admin-articles/new" element={<ArticleForm />} />
-      <Route path="/admin-articles/edit/:id" element={<ArticleForm />} />
-    </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/career" element={<Career />} />
+          <Route path="/article" element={<Article />} />
+          <Route path="/reservation" element={<Reservation />} />
+          <Route path="/article/:id" element={<ArticleDetails />} />
+          <Route path="/career/:id" element={<CareerDetail />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin-login" element={<LoginPage />} />
+          <Route path="/admin-careers" element={<AdminCareers />} />
+          <Route path="/admin-careers/new" element={<CareerForm />} />
+          <Route path="/admin-careers/edit/:id" element={<CareerForm />} />
+          <Route path="/admin-outlets" element={<AdminOutlets />} />
+          <Route path="/admin-outlets/new" element={<OutletForm />} />
+          <Route path="/admin-outlets/edit/:id" element={<OutletForm />} />
+          <Route path="/admin-articles" element={<AdminArticles />} />
+          <Route path="/admin-articles/new" element={<ArticleForm />} />
+          <Route path="/admin-articles/edit/:id" element={<ArticleForm />} />
+          <Route path="*" element={<NotFound />}/>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
 
-export default App
+export default App;
