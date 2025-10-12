@@ -58,17 +58,33 @@ const AdminOutlets = () => {
   const itemsPerPage = 10;
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("token");
+
   // 🔹 Fetch Data
   useEffect(() => {
-    fetch("https://pak-ndut-backend-production.up.railway.app/outlets")
+    fetch(`${import.meta.env.VITE_API_URL}/outlets`)
       .then((res) => res.json())
       .then((data) => setOutlets(Array.isArray(data?.data) ? data.data : []))
       .catch((err) => console.error("Failed to load outlets:", err));
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this outlet?")) {
-      setOutlets((prev) => prev.filter((o) => o.id !== id));
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/outlets/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (!res.ok) throw new Error("Failed to delete outlet");
+        setOutlets((prev) => prev.filter((o) => o.id !== id));
+        alert(`Outlet deleted successfully.`);
+      } catch (err) {
+        alert("Failed to delete outlet. Please try again.");
+        console.error(err);
+      }
     }
   };
 

@@ -89,21 +89,6 @@ const ArticleForm = () => {
         </h1>
 
         {/* ID */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">ID</label>
-          <input
-            type="text"
-            name="id"
-            value={formData.id}
-            readOnly
-            className="w-full border rounded-md p-2 bg-gray-100 text-gray-600"
-          />
-          {!id && (
-            <p className="text-xs text-gray-500 mt-1">
-              ID generated automatically
-            </p>
-          )}
-        </div>
 
         {/* Title */}
         <div>
@@ -174,7 +159,7 @@ const ArticleForm = () => {
         <div className="flex justify-end gap-3 pt-2">
           <button
             type="button"
-            onClick={() => navigate("/admin/articles")}
+            onClick={() => navigate("/admin-articles")}
             className="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-md"
           >
             Cancel

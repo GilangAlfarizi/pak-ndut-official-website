@@ -47,17 +47,33 @@ const AdminArticles = () => {
   const itemsPerPage = 10;
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("token");
+
   // 🔹 Fetch Data
   useEffect(() => {
-    fetch("/data/articles.json")
+    fetch(`${import.meta.env.VITE_API_URL}/articles`)
       .then((res) => res.json())
       .then((data) => setArticles(Array.isArray(data?.data) ? data.data : []))
       .catch((err) => console.error("Failed to load articles:", err));
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this article?")) {
-      setArticles((prev) => prev.filter((a) => a.id !== id));
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/articles/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (!res.ok) throw new Error("Failed to delete article");
+        setArticles((prev) => prev.filter((o) => o.id !== id));
+        alert(`article deleted successfully.`);
+      } catch (err) {
+        alert("Failed to delete article. Please try again.");
+        console.error(err);
+      }
     }
   };
 

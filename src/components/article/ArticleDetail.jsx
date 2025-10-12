@@ -9,7 +9,7 @@ const ArticleDetail = () => {
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        const res = await fetch('https://pak-ndut-backend-production.up.railway.app/articles');
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/articles`);
         const data = await res.json();
         const found = data.data.find((item) => item.id === parseInt(id));
         setArticle(found);

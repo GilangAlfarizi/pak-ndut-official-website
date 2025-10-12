@@ -7,7 +7,7 @@ const JobDetail = () => {
   const [job, setJob] = useState(null);
 
   useEffect(() => {
-    fetch('https://pak-ndut-backend-production.up.railway.app/careers')
+    fetch(`${import.meta.env.VITE_API_URL}/careers`)
       .then((res) => res.json())
       .then((data) => {
         const foundJob = data.data.find((item) => item.id === parseInt(id));

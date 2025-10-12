@@ -24,7 +24,7 @@ const Outlets = () => {
   };
 
   useEffect(() => {
-    fetch("https://pak-ndut-backend-production.up.railway.app/outlets")
+    fetch(`${import.meta.env.VITE_API_URL}/outlets`)
       .then((res) => res.json())
       .then((rawData) => {
         const groupedData = [];

@@ -49,17 +49,32 @@ const AdminCareers = () => {
   const itemsPerPage = 10;
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
-    fetch("/data/careers.json")
+    fetch(`${import.meta.env.VITE_API_URL}/careers`)
       .then((res) => res.json())
       .then((data) => setCareers(Array.isArray(data?.data) ? data.data : []))
       .catch((err) => console.error("Failed to load careers:", err));
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this career?")) {
-      // TODO: delete ke backend
-      setCareers((prev) => prev.filter((c) => c.id !== id));
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/careers/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (!res.ok) throw new Error("Failed to delete career");
+        setCareers((prev) => prev.filter((o) => o.id !== id));
+        alert(`career deleted successfully.`);
+      } catch (err) {
+        alert("Failed to delete career. Please try again.");
+        console.error(err);
+      }
     }
   };
 
