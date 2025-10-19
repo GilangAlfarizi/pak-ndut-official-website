@@ -2,39 +2,37 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
+import axios from "axios";
 
 const ArticleForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+
   const [formData, setFormData] = useState({
-    id: "",
     title: "",
-    date: "",
     content: "",
     image: "",
   });
 
+  // ===== Load existing article if editing =====
   useEffect(() => {
     if (id) {
-      // ===== Edit Mode =====
-      fetch("/data/articles.json")
+      fetch("https://pak-ndut-backend-production.up.railway.app/articles")
         .then((res) => res.json())
         .then((data) => {
           const found = data.data.find((o) => String(o.id) === id);
-          if (found) setFormData(found);
-        });
-    } else {
-      // ===== Create Mode =====
-      const newId = Date.now();
-      const today = new Date().toISOString().split("T")[0]; // yyyy-mm-dd
-      setFormData((prev) => ({
-        ...prev,
-        id: newId.toString(),
-        date: today,
-      }));
+          if (found)
+            setFormData({
+              title: found.title || "",
+              content: found.content || "",
+              image: found.image || "",
+            });
+        })
+        .catch((err) => console.error("Error loading article:", err));
     }
   }, [id]);
 
+  // ===== Handlers =====
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -60,16 +58,68 @@ const ArticleForm = () => {
     reader.readAsDataURL(file);
   };
 
-  const handleSubmit = (e) => {
+  // ===== Submit (Create or Update) =====
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (id) {
-      alert(`Article updated! (ID: ${formData.id})`);
-    } else {
-      alert(`Article created! (ID: ${formData.id})`);
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Anda belum login. Silakan login terlebih dahulu.");
+      navigate("/admin-login");
+      return;
     }
-    navigate("/admin/articles");
+
+    try {
+      const payload = {
+        title: formData.title,
+        content: formData.content,
+        image: formData.image,
+      };
+
+      console.log("Data dikirim ke API:", payload);
+
+      if (id) {
+        // ===== Update Mode =====
+        const response = await axios.put(
+          `https://pak-ndut-backend-production.up.railway.app/articles/${id}`,
+          payload,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        console.log("Response:", response.data);
+        alert("Artikel berhasil diperbarui!");
+      } else {
+        // ===== Create Mode =====
+        const response = await axios.post(
+          "https://pak-ndut-backend-production.up.railway.app/articles",
+          payload,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        console.log("Response:", response.data);
+        alert("Artikel berhasil dibuat!");
+      }
+
+      navigate("/admin-articles");
+    } catch (error) {
+      console.error("Gagal menyimpan artikel:", error);
+      console.error("Detail error:", error.response?.data);
+      alert(
+        error.response?.data?.message ||
+          "Terjadi kesalahan saat menyimpan artikel."
+      );
+    }
   };
 
+  // ===== UI =====
   return (
     <div className="p-6 bg-gray-50 min-h-screen flex justify-center">
       <form
@@ -88,8 +138,6 @@ const ArticleForm = () => {
           {id ? "Edit Article" : "Create Article"}
         </h1>
 
-        {/* ID */}
-
         {/* Title */}
         <div>
           <label className="block text-sm font-medium text-gray-700">
@@ -104,22 +152,7 @@ const ArticleForm = () => {
           />
         </div>
 
-        {/* Date */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Date
-          </label>
-          <input
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            className="w-full border rounded-md p-2"
-            required
-          />
-        </div>
-
-        {/* Content pakai ReactQuill-New */}
+        {/* Content */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Content
@@ -132,7 +165,7 @@ const ArticleForm = () => {
           />
         </div>
 
-        {/* Upload Image */}
+        {/* Image Upload */}
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Upload Image
