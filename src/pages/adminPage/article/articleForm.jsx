@@ -11,13 +11,15 @@ const ArticleForm = () => {
   const [formData, setFormData] = useState({
     title: "",
     content: "",
-    image: "",
+    image: null, // simpan File object di sini
   });
+
+  const [preview, setPreview] = useState(null); // untuk preview image
 
   // ===== Load existing article if editing =====
   useEffect(() => {
     if (id) {
-      fetch("https://pak-ndut-backend-production.up.railway.app/articles")
+      fetch(`${import.meta.env.VITE_API_URL}/articles`)
         .then((res) => res.json())
         .then((data) => {
           const found = data.data.find((o) => String(o.id) === id);
@@ -25,8 +27,9 @@ const ArticleForm = () => {
             setFormData({
               title: found.title || "",
               content: found.content || "",
-              image: found.image || "",
+              image: null,
             });
+          if (found?.image) setPreview(found.image);
         })
         .catch((err) => console.error("Error loading article:", err));
     }
@@ -51,11 +54,8 @@ const ArticleForm = () => {
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      setFormData((prev) => ({ ...prev, image: reader.result }));
-    };
-    reader.readAsDataURL(file);
+    setFormData((prev) => ({ ...prev, image: file }));
+    setPreview(URL.createObjectURL(file)); // tampilkan preview
   };
 
   // ===== Submit (Create or Update) =====
@@ -70,23 +70,22 @@ const ArticleForm = () => {
     }
 
     try {
-      const payload = {
-        title: formData.title,
-        content: formData.content,
-        image: formData.image,
-      };
+      // Buat FormData
+      const formPayload = new FormData();
+      formPayload.append("title", formData.title);
+      formPayload.append("content", formData.content);
+      if (formData.image) formPayload.append("image", formData.image);
 
-      console.log("Data dikirim ke API:", payload);
+      console.log("Data dikirim ke API (FormData):", Object.fromEntries(formPayload));
 
       if (id) {
         // ===== Update Mode =====
         const response = await axios.put(
           `https://pak-ndut-backend-production.up.railway.app/articles/${id}`,
-          payload,
+          formPayload,
           {
             headers: {
               Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
             },
           }
         );
@@ -96,11 +95,10 @@ const ArticleForm = () => {
         // ===== Create Mode =====
         const response = await axios.post(
           "https://pak-ndut-backend-production.up.railway.app/articles",
-          payload,
+          formPayload,
           {
             headers: {
               Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
             },
           }
         );
@@ -125,6 +123,7 @@ const ArticleForm = () => {
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-lg rounded-lg p-6 w-full max-w-2xl space-y-4"
+        encType="multipart/form-data"
       >
         <div className="flex justify-center mb-6">
           <img
@@ -176,11 +175,11 @@ const ArticleForm = () => {
             onChange={handleImageUpload}
             className="w-full border rounded-md p-2"
           />
-          {formData.image && (
+          {preview && (
             <div className="mt-3">
               <p className="text-xs text-gray-500 mb-1">Preview:</p>
               <img
-                src={formData.image}
+                src={preview}
                 alt="Preview"
                 className="max-h-40 rounded-md border"
               />
