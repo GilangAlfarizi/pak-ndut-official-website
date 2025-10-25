@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext"; // ambil bahasa
 
 const getShortContent = (text) => {
@@ -31,7 +31,9 @@ const ArticleComponent = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/articles`);
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/articles`
+        );
         const data = await response.json();
         setArticles(data.data);
       } catch (error) {
@@ -56,7 +58,9 @@ const ArticleComponent = () => {
     </div>
   ) : (
     <div className="px-6 py-10 max-w-7xl mx-auto">
-      <h1 className="text-2xl font-bold mb-8">{translations[language].title}</h1>
+      <h1 className="text-2xl font-bold mb-8">
+        {translations[language].title}
+      </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {articles.slice(0, visibleCount).map((article) => (
           <div
@@ -80,11 +84,17 @@ const ArticleComponent = () => {
             </h2>
             <p className="text-sm text-gray-600">{article.date}</p>
             <p className="text-sm text-gray-700 mt-2">
-              {getShortContent(article.content)}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: getShortContent(article.content),
+                }}
+              />
             </p>
             <p className="text-sm text-[#FFCC29] mt-1 font-medium flex items-center gap-1 transition-all duration-300">
               {translations[language].readMore}
-              <span className="transition-transform duration-300 group-hover:translate-x-1">›</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                ›
+              </span>
             </p>
           </div>
         ))}

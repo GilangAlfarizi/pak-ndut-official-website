@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 const provinces = [
   "Aceh",
@@ -46,29 +47,37 @@ const OutletForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [formData, setFormData] = useState({
-    id: "",
     name: "",
     address: "",
     province: "",
-    open_hours: "",
+    openHours: "",
     phone: "",
-    map_url: "",
-    image: ""
+    mapUrl: "",
+    image: null,
   });
+
+  const [preview, setPreview] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     if (id) {
       // ===== Edit Mode =====
-      fetch("/data/outlets.json")
+      fetch(`${import.meta.env.VITE_API_URL}/outlets`)
         .then((res) => res.json())
         .then((data) => {
           const found = data.data.find((o) => String(o.id) === id);
-          if (found) setFormData(found);
+              if (found)
+                setFormData({
+                  name: found.name || "",
+                  address: found.address || "",
+                  province: found.province || "",
+                  openHours: found.openHours ?? found.open_hours ?? "",
+                  phone: found.phone || "",
+                  mapUrl: found.mapUrl ?? found.map_url ?? "",
+                  image: null,
+                });
+              if (found?.image) setPreview(found.image);
         });
-    } else {
-      // ===== Create Mode =====
-      const newId = Date.now();
-      setFormData((prev) => ({ ...prev, id: newId.toString() }));
     }
   }, [id]);
 
@@ -87,21 +96,71 @@ const OutletForm = () => {
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      setFormData((prev) => ({ ...prev, image: reader.result }));
-    };
-    reader.readAsDataURL(file);
+    // store File object and show preview
+    setFormData((prev) => ({ ...prev, image: file }));
+    setPreview(URL.createObjectURL(file));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (id) {
-      alert(`Outlet updated! (ID: ${formData.id})`);
-    } else {
-      alert(`Outlet created! (ID: ${formData.id})`);
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Anda belum login. Silakan login terlebih dahulu.");
+      navigate("/admin-login");
+      return;
     }
-    navigate("/admin/outlets");
+
+    setSubmitting(true);
+
+    try {
+      const formPayload = new FormData();
+      // Do not send id in payload — backend will assign or update by URL
+      formPayload.append("name", formData.name);
+      formPayload.append("address", formData.address);
+      formPayload.append("province", formData.province);
+      formPayload.append("openHours", formData.openHours);
+      formPayload.append("phone", formData.phone);
+      formPayload.append("mapUrl", formData.mapUrl);
+      if (formData.image) formPayload.append("image", formData.image);
+
+      // Validate required fields (openHours and mapUrl must be non-empty strings)
+      if (typeof formData.openHours !== "string" || !formData.openHours.trim()) {
+        alert("openHours should not be empty and must be a string");
+        return;
+      }
+      if (typeof formData.mapUrl !== "string" || !formData.mapUrl.trim()) {
+        alert("mapUrl should not be empty and must be a string");
+        return;
+      }
+
+      // debug entries
+      for (const entry of formPayload.entries()) console.log("FormData:", entry[0], entry[1]);
+
+      const baseUrl = import.meta.env.VITE_API_URL || "https://pak-ndut-backend-production.up.railway.app";
+
+      if (id) {
+        const response = await axios.put(`${baseUrl}/outlets/${id}`, formPayload, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        console.log("Outlet updated:", response.data);
+        alert("Outlet berhasil diperbarui!");
+      } else {
+        const response = await axios.post(`${baseUrl}/outlets`, formPayload, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        console.log("Outlet created:", response.data);
+        alert("Outlet berhasil dibuat!");
+      }
+
+      navigate("/admin-outlets");
+    } catch (err) {
+      console.error("Gagal menyimpan outlet:", err);
+      console.error(err.response?.data);
+      alert(err.response?.data?.message || "Terjadi kesalahan saat menyimpan outlet.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -173,11 +232,12 @@ const OutletForm = () => {
             Open Hours
           </label>
           <input
-            name="open_hours"
-            value={formData.open_hours}
+            name="openHours"
+            value={formData.openHours}
             onChange={handleChange}
             className="w-full border rounded-md p-2"
             placeholder="e.g. 09:00 - 21:00"
+            required
           />
         </div>
 
@@ -197,10 +257,11 @@ const OutletForm = () => {
         <div>
           <label className="block text-sm font-medium text-gray-700">Map URL</label>
           <textarea
-            name="map_url"
-            value={formData.map_url}
+            name="mapUrl"
+            value={formData.mapUrl}
             onChange={handleChange}
             className="w-full border rounded-md p-2 h-20"
+            required
           />
           <p className="text-xs text-gray-500 mt-1">
             Masukkan embed Google Maps (iframe src).
@@ -218,11 +279,11 @@ const OutletForm = () => {
             onChange={handleImageUpload}
             className="w-full border rounded-md p-2"
           />
-          {formData.image && (
+          {preview && (
             <div className="mt-3">
               <p className="text-xs text-gray-500 mb-1">Preview:</p>
               <img
-                src={formData.image}
+                src={preview}
                 alt="Preview"
                 className="max-h-40 rounded-md border"
               />
@@ -241,9 +302,10 @@ const OutletForm = () => {
           </button>
           <button
             type="submit"
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md disabled:opacity-50"
+            disabled={submitting}
           >
-            {id ? "Save Changes" : "Create"}
+            {submitting ? (id ? "Saving changes..." : "Creating...") : id ? "Save Changes" : "Create"}
           </button>
         </div>
       </form>

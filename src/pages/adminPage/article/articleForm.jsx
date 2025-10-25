@@ -81,7 +81,7 @@ const ArticleForm = () => {
       if (id) {
         // ===== Update Mode =====
         const response = await axios.put(
-          `https://pak-ndut-backend-production.up.railway.app/articles/${id}`,
+          `${import.meta.env.VITE_API_URL}/articles/${id}`,
           formPayload,
           {
             headers: {
@@ -94,7 +94,7 @@ const ArticleForm = () => {
       } else {
         // ===== Create Mode =====
         const response = await axios.post(
-          "https://pak-ndut-backend-production.up.railway.app/articles",
+          `${import.meta.env.VITE_API_URL}/articles`,
           formPayload,
           {
             headers: {

@@ -49,7 +49,8 @@ const ArticleDetail = () => {
       )}
 
       <div className="space-y-6 text-justify text-gray-800 leading-relaxed">
-        <p>{article.content}</p>
+        {/* Render raw HTML content. If content is user-supplied, consider sanitizing (e.g. DOMPurify) to avoid XSS. */}
+        <div dangerouslySetInnerHTML={{ __html: article.content }} />
       </div>
     </div>
   );

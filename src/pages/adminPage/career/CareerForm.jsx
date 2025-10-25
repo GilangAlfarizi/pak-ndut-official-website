@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 const CareerForm = () => {
   const navigate = useNavigate();
@@ -8,19 +9,34 @@ const CareerForm = () => {
     id: "",
     name: "",
     location: "",
-    age: "",
+    // age represented as [min, max]
+    age: ["", ""],
     description: "",
-    requirement: []
+    requirement: [],
+    mapUrl: "",
   });
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     if (id) {
       // Edit mode
-      fetch("/data/careers.json")
+      fetch(`${import.meta.env.VITE_API_URL}/careers`)
         .then((res) => res.json())
         .then((data) => {
           const found = data.data.find((c) => String(c.id) === id);
-          if (found) setFormData({ ...found, requirement: found.requirement || [] });
+          if (found)
+            setFormData({
+              ...found,
+              requirement: found.requirement || [],
+              mapUrl: found.mapUrl ?? found.map_url ?? "",
+              // normalize age into array [min, max]
+              age: Array.isArray(found.age)
+                ? found.age.map((a) => String(a))
+                : found.age && typeof found.age === "string"
+                ? found.age.split("-").map((s) => s.trim())
+                : ["", ""],
+              image: found.image ?? null,
+            });
         });
     } else {
       // Create mode -> generate ID
@@ -34,6 +50,16 @@ const CareerForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleAgePartChange = (index, value) => {
+    setFormData((prev) => {
+      const nextAge = [...prev.age];
+      nextAge[index] = value;
+      return { ...prev, age: nextAge };
+    });
+  };
+
+  // image upload removed — form now sends JSON payload without file
+
   const handleRequirementChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -41,14 +67,64 @@ const CareerForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (id) {
-      alert(`Career updated! (ID: ${formData.id})`);
-    } else {
-      alert(`Career created! (ID: ${formData.id})`);
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Anda belum login. Silakan login terlebih dahulu.");
+      navigate("/admin-login");
+      return;
     }
-    navigate("/admin/careers");
+
+    setSubmitting(true);
+
+    try {
+      // Build payload object
+      // Normalize age values to numbers when possible
+      const normalizedAge = (formData.age || [])
+        .filter((v) => v !== "" && v != null)
+        .map((v) => (typeof v === "number" ? v : !isNaN(Number(v)) ? Number(v) : v));
+
+      const payloadObj = {
+        name: formData.name,
+        location: formData.location,
+        age: normalizedAge,
+        description: formData.description,
+        requirement: formData.requirement || [],
+        mapUrl: formData.mapUrl || undefined,
+      };
+
+      const baseUrl = import.meta.env.VITE_API_URL || "";
+
+      if (!baseUrl) {
+        alert("No API configured (VITE_API_URL). Career created locally.");
+      } else {
+        // Send JSON payload (image removed)
+        console.log("Payload (JSON):", payloadObj);
+
+        if (id) {
+          const res = await axios.put(`${baseUrl}/careers/${id}`, payloadObj, {
+            headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+          });
+          console.log("Updated:", res.data);
+          alert("Career berhasil diperbarui!");
+        } else {
+          const res = await axios.post(`${baseUrl}/careers`, payloadObj, {
+            headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+          });
+          console.log("Created:", res.data);
+          alert("Career berhasil dibuat!");
+        }
+      }
+
+      navigate("/admin-careers");
+    } catch (err) {
+      console.error("Gagal menyimpan career:", err);
+      alert(err.response?.data?.message || "Terjadi kesalahan saat menyimpan career.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -95,15 +171,27 @@ const CareerForm = () => {
           />
         </div>
 
-        {/* Age */}
+        {/* Age (min / max) */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Age</label>
-          <input
-            name="age"
-            value={formData.age}
-            onChange={handleChange}
-            className="w-full border rounded-md p-2"
-          />
+          <label className="block text-sm font-medium text-gray-700">Age (min - max)</label>
+          <div className="flex gap-3">
+            <input
+              type="number"
+              name="ageMin"
+              value={formData.age[0]}
+              onChange={(e) => handleAgePartChange(0, e.target.value)}
+              className="w-1/2 border rounded-md p-2"
+              placeholder="min age"
+            />
+            <input
+              type="number"
+              name="ageMax"
+              value={formData.age[1]}
+              onChange={(e) => handleAgePartChange(1, e.target.value)}
+              className="w-1/2 border rounded-md p-2"
+              placeholder="max age"
+            />
+          </div>
         </div>
 
         {/* Description */}
@@ -141,9 +229,10 @@ const CareerForm = () => {
           </button>
           <button
             type="submit"
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md disabled:opacity-50"
+            disabled={submitting}
           >
-            {id ? "Save Changes" : "Create"}
+            {submitting ? (id ? "Saving changes..." : "Creating...") : id ? "Save Changes" : "Create"}
           </button>
         </div>
       </form>

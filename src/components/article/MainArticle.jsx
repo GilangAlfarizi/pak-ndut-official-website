@@ -24,7 +24,7 @@ const ArticleCard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("https://pak-ndut-backend-production.up.railway.app/articles");
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/articles`);
         const data = await res.json();
         if (data && Array.isArray(data.data) && data.data.length > 0) {
           setLatestArticle(data.data[0]); // Ambil artikel paling atas
@@ -49,7 +49,10 @@ const ArticleCard = () => {
       {/* Text Section */}
       <div className="flex-1 mt-4 md:mt-0 flex flex-col justify-center items-start ml-0 md:ml-64 mr-0 md:mr-7">
         <h2 className="text-white text-2xl font-bold">{latestArticle.title}</h2>
-        <p className="text-white mt-2">{latestArticle.content}</p>
+        <p className="text-white mt-2">
+          {" "}
+          <div dangerouslySetInnerHTML={{ __html: latestArticle.content }} />
+        </p>
         <p className="text-white mt-4">{latestArticle.date}</p>
         <button
           className="bg-white text-[#BA0202] hover:bg-gray-200 transition duration-300 mt-4 py-2 px-10 rounded-full font-semibold"
