@@ -17,6 +17,37 @@ const SlidingMenu = () => {
     },
   };
 
+  const menuItems = [
+    {
+      src: "https://ik.imagekit.io/5mtwtegkx/pak-ndut-images/BebekSangan.png?updatedAt=1756612623514",
+      alt: "Menu Item 1",
+    },
+    {
+      src: "https://ik.imagekit.io/5mtwtegkx/pak-ndut-images/BebekSerundeng.png?updatedAt=1756612623521",
+      alt: "Menu Item 2",
+    },
+    {
+      src: "https://ik.imagekit.io/5mtwtegkx/pak-ndut-images/BebekRemuk.png?updatedAt=1756612619597",
+      alt: "Menu Item 3",
+    },
+    {
+      src: "https://ik.imagekit.io/5mtwtegkx/pak-ndut-images/BebekOri.png?updatedAt=1756612615747",
+      alt: "Menu Item 4",
+    },
+    {
+      src: "https://ik.imagekit.io/5mtwtegkx/pak-ndut-images/BebekKremes.png?updatedAt=1756612613514",
+      alt: "Menu Item 5",
+    },
+    {
+      src: "https://ik.imagekit.io/5mtwtegkx/pak-ndut-images/BebekLadaHitam.png?updatedAt=1756612612028",
+      alt: "Menu Item 6",
+    },
+    {
+      src: "https://ik.imagekit.io/5mtwtegkx/pak-ndut-images/BebekAsamManis.png?updatedAt=1756612611500",
+      alt: "Menu Item 7",
+    },
+  ];
+
   const handleClick = () => {
     setIsPaused(!isPaused);
   };
@@ -28,41 +59,14 @@ const SlidingMenu = () => {
       </h2>
       <Marquee pauseOnClick={isPaused} speed={90}>
         <div className="flex space-x-10" onClick={handleClick}>
-          <img
-            src="../../public/images/BebekAsamManis.png"
-            alt="Menu Item 1"
-            className="h-60 w-auto md:h-100"
-          />
-          <img
-            src="../../public/images/BebekKremes.png"
-            alt="Menu Item 2"
-            className="h-60 w-auto md:h-100"
-          />
-          <img
-            src="../../public/images/BebekLadaHitam.png"
-            alt="Menu Item 3"
-            className="h-60 w-auto md:h-100"
-          />
-          <img
-            src="../../public/images/BebekOri.png"
-            alt="Menu Item 4"
-            className="h-60 w-auto md:h-100"
-          />
-          <img
-            src="../../public/images/BebekRemuk.png"
-            alt="Menu Item 5"
-            className="h-60 w-auto md:h-100"
-          />
-          <img
-            src="../../public/images/BebekSangan.png"
-            alt="Menu Item 6"
-            className="h-60 w-auto md:h-100"
-          />
-          <img
-            src="../../public/images/BebekSerundeng.png"
-            alt="Menu Item 7"
-            className="h-60 w-auto md:h-100"
-          />
+          {menuItems.map((item, index) => (
+            <img
+              key={index}
+              src={item.src}
+              alt={item.alt}
+              className="h-60 w-auto md:h-100"
+            />
+          ))}
         </div>
       </Marquee>
     </div>
