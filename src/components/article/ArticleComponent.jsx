@@ -53,11 +53,11 @@ const ArticleComponent = () => {
   };
 
   return articles.length === 0 ? (
-    <div className="px-6 py-10 max-w-7xl mx-auto text-center text-gray-500">
+    <div className=" mx-auto text-center text-gray-500 h-[80vh] flex items-center justify-center">
       No articles has been published yet
     </div>
   ) : (
-    <div className="px-6 py-10 max-w-7xl mx-auto">
+    <div className="px-6 py-10 max-w-7xl mx-auto ">
       <h1 className="text-2xl font-bold mb-8">
         {translations[language].title}
       </h1>

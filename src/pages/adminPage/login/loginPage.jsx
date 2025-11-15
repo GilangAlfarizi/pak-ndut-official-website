@@ -13,7 +13,7 @@ const LoginPage = () => {
     try {
       // 🔹 Kirim request ke backend
       const response = await axios.post(
-        "https://pak-ndut-backend-production.up.railway.app/users/login",
+        `${import.meta.env.VITE_API_URL}/users/login`,
         {
           username: username,
           password: password,

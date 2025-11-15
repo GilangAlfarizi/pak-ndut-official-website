@@ -7,7 +7,7 @@ import Footer from "../../components/global/Foot";
 const Article = () => {
   return (
     <>
-      <div>
+      <div className="bg-gradient-to-b from-[#BA0202] via-transparent to-transparent">
         <Navbar />
         <ArticleCard />
         <ArticleComponent />

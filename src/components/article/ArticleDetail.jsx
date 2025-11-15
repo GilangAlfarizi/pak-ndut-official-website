@@ -24,7 +24,7 @@ const ArticleDetail = () => {
   if (!article) return <div className="text-center py-20">Loading...</div>;
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-12 mt-10">
+    <div className="max-w-3xl mx-auto px-6 py-12">
       {/* Back Button */}
       <button
         onClick={() => navigate(-1)} // Bisa juga diganti ke: () => navigate('/article')
@@ -33,8 +33,8 @@ const ArticleDetail = () => {
         ← Back
       </button>
 
-      <h1 className="text-2xl font-bold mb-2">{article.title}</h1>
-      <p className="text-sm text-gray-500 mb-6">{article.date}</p>
+      <h1 className="text-4xl font-bold mb-2 text-white">{article.title}</h1>
+      <p className="text-sm text-gray-100 mb-6">{article.date}</p>
 
       {article.image ? (
         <img

@@ -40,14 +40,14 @@ const ArticleCard = () => {
   if (!latestArticle)
     return (
       <div className="text-center py-10 text-white">
-        {translations[language].loading}
+        {/* {translations[language].loading} */}
       </div>
     );
 
   return (
-    <div className="bg-[#BA0202] p-6 md:p-20 w-full h-full flex flex-col-reverse md:flex-row items-center">
+    <div className="bg-[#BA0202] p-6 md:p-20 w-full h-full flex flex-col-reverse md:flex-row xl:px-60">
       {/* Text Section */}
-      <div className="flex-1 mt-4 md:mt-0 flex flex-col justify-center items-start ml-0 md:ml-64 mr-0 md:mr-7">
+      <div className="flex-1 flex flex-col justify-center items-start">
         <h2 className="text-white text-2xl font-bold">{latestArticle.title}</h2>
         <p className="text-white mt-2">
           {" "}
@@ -63,7 +63,7 @@ const ArticleCard = () => {
       </div>
 
       {/* Image Section */}
-      <div className="flex-1 mr-1 md:mr-25">
+      <div className="flex-1">
         {latestArticle.image ? (
           <img
             src={latestArticle.image}
