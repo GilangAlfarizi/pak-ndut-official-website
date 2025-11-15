@@ -54,7 +54,7 @@ const Reservation = () => {
 
       {/* Outlet Cards */}
       {OutletsData.length > 0 ? (
-        <div className="grid gap-8 bg-[#BA0202] p-4 py-10 xl:py-10 xl:px-40 justify-center grid-cols-1 md:grid-cols-2">
+        <div className="grid gap-8 bg-[#BA0202] p-4 py-10 xl:py-10 xl:px-20 justify-center grid-cols-1 md:grid-cols-2">
           <OutletCards items={OutletsData} />
         </div>
       ) : (
