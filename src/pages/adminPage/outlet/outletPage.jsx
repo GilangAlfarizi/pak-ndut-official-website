@@ -15,7 +15,7 @@ const DetailModal = ({ outlet, onClose }) => {
           <div><p className="font-semibold">Name:</p><p>{outlet.name}</p></div>
           <div><p className="font-semibold">Address:</p><p>{outlet.address}</p></div>
           <div><p className="font-semibold">Province:</p><p>{outlet.province}</p></div>
-          <div><p className="font-semibold">Open Hours:</p><p>{outlet.open_hours}</p></div>
+          <div><p className="font-semibold">Open Hours:</p><p>{outlet.openHours}</p></div>
           <div><p className="font-semibold">Phone:</p><p>{outlet.phone}</p></div>
           <div className="space-y-2">
             <p className="font-semibold">Map:</p>

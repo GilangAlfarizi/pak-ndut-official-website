@@ -42,7 +42,7 @@ const Outlets = () => {
             name: item.name,
             address: item.address,
             province: item.province,
-            open_hours: item.open_hours,
+            openHours: item.openHours,
             mapUrl: item.mapUrl,
             phone: item.phone,
           };
@@ -59,7 +59,7 @@ const Outlets = () => {
         });
 
         setAccordionData(groupedData);
-        setOutletCount(rawData.data.length); 
+        setOutletCount(rawData.data.length);
         setProvinceCount(provinceSet.size); // jumlah provinsi unik
       })
       .catch((err) => console.error("Failed to fetch outlet data:", err));
@@ -78,13 +78,19 @@ const Outlets = () => {
           <div className="w-240 flex">
             <div className="flex w-full h-full justify-center items-center">
               <div className="text-center text-[#BA0202]">
-                <h4 className="text-6xl xl:text-8xl font-bold">{outletCount}</h4>
-                <p className="font-bold">{translations[language].outletLabel}</p>
+                <h4 className="text-6xl xl:text-8xl font-bold">
+                  {outletCount}
+                </h4>
+                <p className="font-bold">
+                  {translations[language].outletLabel}
+                </p>
               </div>
             </div>
             <div className="flex w-full h-full justify-center items-center">
               <div className="text-center text-[#BA0202]">
-                <h4 className="text-6xl xl:text-8xl font-bold">{provinceCount}</h4>
+                <h4 className="text-6xl xl:text-8xl font-bold">
+                  {provinceCount}
+                </h4>
                 <p className="font-bold">{translations[language].cityLabel}</p>
               </div>
             </div>

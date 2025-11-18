@@ -95,7 +95,7 @@ const AccordionOutlet = ({ items }) => {
                       <p className="font-semibold text-xl">
                         {translations[language].openHours}
                       </p>
-                      <p>{outlet.open_hours}</p>
+                      <p>{outlet.openHours}</p>
                     </div>
                     <div>
                       <p className="font-semibold text-xl">

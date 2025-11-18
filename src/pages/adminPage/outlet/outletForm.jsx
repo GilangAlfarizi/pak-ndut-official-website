@@ -71,7 +71,7 @@ const OutletForm = () => {
                   name: found.name || "",
                   address: found.address || "",
                   province: found.province || "",
-                  openHours: found.openHours ?? found.open_hours ?? "",
+                  openHours: found.openHours ?? found.openHours ?? "",
                   phone: found.phone || "",
                   mapUrl: found.mapUrl ?? found.map_url ?? "",
                   image: null,
