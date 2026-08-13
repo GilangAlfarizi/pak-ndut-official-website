@@ -87,9 +87,9 @@ const ArticleComponent = () => {
               {article.title}
             </h2>
             <p className="text-sm text-gray-600">{article.date}</p>
-            <p className="text-sm text-gray-700 mt-2">
+            {/* <p className="text-sm text-gray-700 mt-2">
               {getShortContent(article.content)}
-            </p>
+            </p> */}
             <p className="text-sm text-[#FFCC29] mt-1 font-medium flex items-center gap-1 transition-all duration-300">
               {translations[language].readMore}
               <span className="transition-transform duration-300 group-hover:translate-x-1">
