@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext"; // ambil bahasa
 
+const getShortContent = (html, maxLength = 85) => {
+  if (!html) return "";
+  const plainText = html.replace(/<[^>]+>/g, "");
+  return plainText.length > maxLength
+    ? plainText.substring(0, maxLength).trim() + "..."
+    : plainText;
+};
+
 const ArticleCard = () => {
   const [latestArticle, setLatestArticle] = useState(null);
   const navigate = useNavigate();
@@ -50,8 +58,7 @@ const ArticleCard = () => {
       <div className="flex-1 flex flex-col justify-center items-start">
         <h2 className="text-white text-2xl font-bold">{latestArticle.title}</h2>
         <p className="text-white mt-2">
-          {" "}
-          <div dangerouslySetInnerHTML={{ __html: latestArticle.content }} />
+          {getShortContent(latestArticle.content)}
         </p>
         <p className="text-white mt-4">{latestArticle.date}</p>
         <button
