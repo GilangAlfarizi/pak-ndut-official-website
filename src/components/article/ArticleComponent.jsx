@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext"; // ambil bahasa
 
-const getShortContent = (text) => {
-  return text.length > 85 ? text.substring(0, 85) + "..." : text;
+const getShortContent = (html, maxLength = 85) => {
+  // Hilangkan semua tag HTML
+  const plainText = html.replace(/<[^>]+>/g, "");
+  return plainText.length > maxLength
+    ? plainText.substring(0, maxLength).trim() + "..."
+    : plainText;
 };
 
 const ArticleComponent = () => {
@@ -32,7 +36,7 @@ const ArticleComponent = () => {
     const fetchArticles = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/articles`
+          `${import.meta.env.VITE_API_URL}/articles`,
         );
         const data = await response.json();
         setArticles(data.data);
@@ -84,11 +88,7 @@ const ArticleComponent = () => {
             </h2>
             <p className="text-sm text-gray-600">{article.date}</p>
             <p className="text-sm text-gray-700 mt-2">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: getShortContent(article.content),
-                }}
-              />
+              {getShortContent(article.content)}
             </p>
             <p className="text-sm text-[#FFCC29] mt-1 font-medium flex items-center gap-1 transition-all duration-300">
               {translations[language].readMore}
