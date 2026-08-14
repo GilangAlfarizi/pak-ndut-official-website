@@ -70,10 +70,10 @@ const JobDetail = () => {
           {/* Button */}
           <div className="text-center">
             <a
-              href={`https://mail.google.com/mail/?view=cm&fs=1&to=info@pakndut.co&su=Job Application for ${encodeURIComponent(
-                job.name
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=indopdmandiri.hrd@gmail.com&su=Job Application for ${encodeURIComponent(
+                job.name,
               )}&body=Dear HR,%0D%0A%0D%0AI am interested in the ${encodeURIComponent(
-                job.name
+                job.name,
               )} position at ${encodeURIComponent(job.location)}.`}
               target="_blank"
               rel="noopener noreferrer"
